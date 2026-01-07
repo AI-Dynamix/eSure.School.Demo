@@ -211,7 +211,7 @@ export const getPLStatement = (): PLStatement[] => [
 ]
 
 export const getRevenueTimeSeries = (): TimeSeriesData[] =>
-  MONTHS.map((month, i) => ({
+  MONTHS.map((month) => ({
     month,
     value: randomInt(1_200_000_000, 2_100_000_000),
     label: formatCurrency(randomInt(1_200_000_000, 2_100_000_000))

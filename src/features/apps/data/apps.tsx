@@ -1,18 +1,15 @@
 import {
   IconTelegram,
   IconNotion,
-  IconFigma,
   IconTrello,
   IconSlack,
   IconZoom,
   IconStripe,
   IconGmail,
   IconMedium,
-  IconSkype,
   IconDocker,
   IconGithub,
   IconGitlab,
-  IconDiscord,
   IconWhatsapp,
 } from '@/assets/brand-icons'
 
@@ -28,12 +25,6 @@ export const apps = [
     logo: <IconNotion />,
     connected: true,
     desc: 'Effortlessly sync Notion pages for seamless collaboration.',
-  },
-  {
-    name: 'Figma',
-    logo: <IconFigma />,
-    connected: true,
-    desc: 'View and collaborate on Figma designs in one place.',
   },
   {
     name: 'Trello',
@@ -72,12 +63,6 @@ export const apps = [
     desc: 'Explore and share Medium stories on your dashboard.',
   },
   {
-    name: 'Skype',
-    logo: <IconSkype />,
-    connected: false,
-    desc: 'Connect with Skype contacts seamlessly.',
-  },
-  {
     name: 'Docker',
     logo: <IconDocker />,
     connected: false,
@@ -94,12 +79,6 @@ export const apps = [
     logo: <IconGitlab />,
     connected: false,
     desc: 'Efficiently manage code projects with GitLab integration.',
-  },
-  {
-    name: 'Discord',
-    logo: <IconDiscord />,
-    connected: false,
-    desc: 'Connect with Discord for seamless team communication.',
   },
   {
     name: 'WhatsApp',

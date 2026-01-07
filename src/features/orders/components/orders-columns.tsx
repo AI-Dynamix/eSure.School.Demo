@@ -184,7 +184,7 @@ export const ordersColumns: ColumnDef<Order>[] = [
   },
   {
       id: 'actions',
-      cell: ({ row }) => {
+      cell: () => {
           return (
               <div className='flex justify-end'>
                   <Badge variant='outline' className='cursor-pointer hover:bg-muted font-normal text-[10px] py-0'>
