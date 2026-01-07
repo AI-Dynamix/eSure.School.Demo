@@ -1,0 +1,58 @@
+import { Student } from '@/types/student'
+
+export const mockStudents: Student[] = [
+  { 
+    id: "HS001", 
+    studentCode: "HS001",
+    fullName: "Nguyễn Văn An", 
+    dateOfBirth: "2010-03-15", 
+    gender: 'male',
+    className: "8A1", 
+    schoolId: "SCH002",
+    schoolName: "THCS Lê Văn Tám", 
+    identityNumber: "079***456", 
+    parentName: "Nguyễn Văn Bố",
+    parentPhone: "0909000111",
+    parentEmail: "phuhuynh@example.com",
+    insuranceStatus: "active", 
+    packageName: "Gói Vàng", 
+    policyNumber: "PVI-2024-001",
+    expiryDate: "2025-08-31" 
+  },
+  { 
+    id: "HS002", 
+    studentCode: "HS002",
+    fullName: "Trần Thị Bình", 
+    dateOfBirth: "2011-07-22", 
+    gender: 'female',
+    className: "7B2", 
+    schoolId: "SCH002",
+    schoolName: "THCS Lê Văn Tám", 
+    identityNumber: null, 
+    parentName: "Trần Văn Mẹ",
+    parentPhone: "0909000222",
+    parentEmail: null,
+    insuranceStatus: "pending_info", 
+    packageName: "Gói Bạc", 
+    policyNumber: null,
+    expiryDate: null 
+  },
+  { 
+    id: "HS003", 
+    studentCode: "HS003",
+    fullName: "Lê Hoàng Cường", 
+    dateOfBirth: "2009-11-08", 
+    gender: 'male',
+    className: "9A3", 
+    schoolId: "SCH002",
+    schoolName: "THCS Lê Văn Tám", 
+    identityNumber: "079***789", 
+    parentName: "Lê Văn Ba",
+    parentPhone: "0909000333",
+    parentEmail: "cuong.parent@example.com",
+    insuranceStatus: "pending_payment", 
+    packageName: "Gói Vàng", 
+    policyNumber: null,
+    expiryDate: null 
+  },
+]

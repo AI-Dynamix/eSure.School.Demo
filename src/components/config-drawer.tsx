@@ -72,7 +72,7 @@ export function ConfigDrawer() {
             onClick={handleReset}
             aria-label='Reset all settings to default values'
           >
-            Reset
+            Đặt lại
           </Button>
         </SheetFooter>
       </SheetContent>
@@ -173,7 +173,7 @@ function ThemeConfig() {
   return (
     <div>
       <SectionTitle
-        title='Theme'
+        title='Giao diện'
         showReset={theme !== defaultTheme}
         onReset={() => setTheme(defaultTheme)}
       />
@@ -187,17 +187,17 @@ function ThemeConfig() {
         {[
           {
             value: 'system',
-            label: 'System',
+            label: 'Hệ thống',
             icon: IconThemeSystem,
           },
           {
             value: 'light',
-            label: 'Light',
+            label: 'Sáng',
             icon: IconThemeLight,
           },
           {
             value: 'dark',
-            label: 'Dark',
+            label: 'Tối',
             icon: IconThemeDark,
           },
         ].map((item) => (
@@ -216,7 +216,7 @@ function SidebarConfig() {
   return (
     <div className='max-md:hidden'>
       <SectionTitle
-        title='Sidebar'
+        title='Thanh bên'
         showReset={defaultVariant !== variant}
         onReset={() => setVariant(defaultVariant)}
       />
@@ -240,7 +240,7 @@ function SidebarConfig() {
           },
           {
             value: 'sidebar',
-            label: 'Sidebar',
+            label: 'Thanh bên',
             icon: IconSidebarSidebar,
           },
         ].map((item) => (

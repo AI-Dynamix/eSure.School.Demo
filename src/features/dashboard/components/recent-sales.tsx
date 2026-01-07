@@ -15,7 +15,7 @@ export function RecentSales() {
               olivia.martin@email.com
             </p>
           </div>
-          <div className='font-medium'>+$1,999.00</div>
+          <div className='font-medium'>+1,999.00 đ</div>
         </div>
       </div>
       <div className='flex items-center gap-4'>

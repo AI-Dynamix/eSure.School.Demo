@@ -88,7 +88,7 @@ export function UsersMultiDeleteDialog<TData>({
           </Alert>
         </div>
       }
-      confirmText='Delete'
+      confirmText='Xóa'
       destructive
     />
   )

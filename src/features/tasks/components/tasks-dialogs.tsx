@@ -63,7 +63,7 @@ export function TasksDialogs() {
                 This action cannot be undone.
               </>
             }
-            confirmText='Delete'
+            confirmText='Xóa'
           />
         </>
       )}

@@ -106,17 +106,17 @@ export function UsersTable({ data, search, navigate }: DataTableProps) {
         filters={[
           {
             columnId: 'status',
-            title: 'Status',
+            title: 'Trạng thái',
             options: [
-              { label: 'Active', value: 'active' },
-              { label: 'Inactive', value: 'inactive' },
+              { label: 'Hoạt động', value: 'active' },
+              { label: 'Ngưng hoạt động', value: 'inactive' },
               { label: 'Invited', value: 'invited' },
               { label: 'Suspended', value: 'suspended' },
             ],
           },
           {
             columnId: 'role',
-            title: 'Role',
+            title: 'Vai trò',
             options: roles.map((role) => ({ ...role })),
           },
         ]}
@@ -180,7 +180,7 @@ export function UsersTable({ data, search, navigate }: DataTableProps) {
                   colSpan={columns.length}
                   className='h-24 text-center'
                 >
-                  No results.
+                  Không có dữ liệu.
                 </TableCell>
               </TableRow>
             )}

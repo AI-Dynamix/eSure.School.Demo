@@ -19,7 +19,7 @@ import { Input } from '@/components/ui/input'
 
 const formSchema = z.object({
   email: z.email({
-    error: (iss) => (iss.input === '' ? 'Please enter your email' : undefined),
+    error: (iss) => (iss.input === '' ? 'Vui lòng nhập email' : undefined),
   }),
 })
 
@@ -41,7 +41,7 @@ export function ForgotPasswordForm({
     console.log(data)
 
     toast.promise(sleep(2000), {
-      loading: 'Sending email...',
+      loading: 'Đang gửi email...',
       success: () => {
         setIsLoading(false)
         form.reset()
@@ -73,7 +73,7 @@ export function ForgotPasswordForm({
           )}
         />
         <Button className='mt-2' disabled={isLoading}>
-          Continue
+          Tiếp tục
           {isLoading ? <Loader2 className='animate-spin' /> : <ArrowRight />}
         </Button>
       </form>

@@ -1,205 +1,155 @@
 import {
-  Construction,
-  LayoutDashboard,
-  Monitor,
-  Bug,
-  ListTodo,
-  FileX,
-  HelpCircle,
-  Lock,
-  Bell,
-  Package,
-  Palette,
-  ServerOff,
-  Settings,
-  Wrench,
-  UserCog,
-  UserX,
-  Users,
-  MessagesSquare,
-  ShieldCheck,
-  AudioWaveform,
-  Command,
-  GalleryVerticalEnd,
-} from 'lucide-react'
-import { ClerkLogo } from '@/assets/clerk-logo'
-import { type SidebarData } from '../types'
+  IconDashboard,
+  IconSchool,
+  IconShoppingCart,
+  IconUpload,
+  IconReportAnalytics,
+  IconSettings,
+  IconMap,
+  IconBuildingBank,
+  IconCoin,
+  IconChalkboard,
+} from '@tabler/icons-react'
 
-export const sidebarData: SidebarData = {
+// Role definitions
+export type UserRole = 'esure_admin' | 'agency_admin' | 'school_admin'
+
+export interface Team {
+  name: string
+  logo: React.ElementType | string
+  plan: string
+  role: string
+}
+
+export const teams: Team[] = [
+  {
+    name: 'eSure Admin',
+    logo: '/images/favicon.png',
+    plan: 'Platform Operator',
+    role: 'esure_admin',
+  },
+  {
+    name: 'Sở GDĐT TP.HCM',
+    logo: '/images/favicon.png',
+    plan: 'Management Agency',
+    role: 'agency_admin',
+  },
+  {
+    name: 'Trường THCS Lê Văn Tám',
+    logo: '/images/favicon.png',
+    plan: 'School Admin',
+    role: 'school_admin',
+  },
+]
+
+// Navigation for eSure Admin (Platform)
+const navEsure = [
+  {
+    title: 'Tổng quan',
+    url: '/',
+    icon: IconDashboard,
+  },
+  {
+    title: 'Địa bàn',
+    url: '/geography',
+    icon: IconMap,
+  },
+  {
+    title: 'Đối tác & Sản phẩm',
+    url: '/partners',
+    icon: IconBuildingBank,
+  },
+  {
+    title: 'Quản lý Trường',
+    url: '/schools',
+    icon: IconSchool,
+  },
+  {
+    title: 'Đơn hàng',
+    url: '/orders',
+    icon: IconShoppingCart,
+  },
+  {
+    title: 'Công nợ',
+    url: '/accounts',
+    icon: IconCoin,
+  },
+  {
+    title: 'Báo cáo',
+    url: '/reports',
+    icon: IconReportAnalytics,
+  },
+  {
+    title: 'Cài đặt',
+    url: '/settings',
+    icon: IconSettings,
+  },
+]
+
+// Navigation for Agency Admin (Sở GD)
+const navAgency = [
+  {
+    title: 'Tổng quan (Sở)',
+    url: '/',
+    icon: IconDashboard,
+  },
+  {
+    title: 'Import Dữ liệu',
+    url: '/import',
+    icon: IconUpload,
+  },
+  {
+    title: 'Danh sách Trường',
+    url: '/schools',
+    icon: IconSchool,
+  },
+  {
+    title: 'Báo cáo',
+    url: '/reports',
+    icon: IconReportAnalytics,
+  },
+]
+
+// Navigation for School Admin (Nhà trường)
+const navSchool = [
+  {
+    title: 'Tổng quan (Trường)',
+    url: '/',
+    icon: IconDashboard,
+  },
+  {
+    title: 'Import Dữ liệu',
+    url: '/import',
+    icon: IconUpload,
+  },
+  {
+    title: 'Lớp học & Sĩ số', // Thay thế Quản lý HS
+    url: '/classes',
+    icon: IconChalkboard,
+  },
+  {
+    title: 'Báo cáo',
+    url: '/reports',
+    icon: IconReportAnalytics,
+  },
+]
+
+export const getNavByRole = (role: string) => {
+  switch (role) {
+    case 'esure_admin': return navEsure
+    case 'agency_admin': return navAgency
+    case 'school_admin': return navSchool
+    default: return navEsure
+  }
+}
+
+export const sidebarData = {
   user: {
-    name: 'satnaing',
-    email: 'satnaingdev@gmail.com',
+    name: 'Admin User',
+    email: 'admin@esure.school',
     avatar: '/avatars/shadcn.jpg',
   },
-  teams: [
-    {
-      name: 'Shadcn Admin',
-      logo: Command,
-      plan: 'Vite + ShadcnUI',
-    },
-    {
-      name: 'Acme Inc',
-      logo: GalleryVerticalEnd,
-      plan: 'Enterprise',
-    },
-    {
-      name: 'Acme Corp.',
-      logo: AudioWaveform,
-      plan: 'Startup',
-    },
-  ],
-  navGroups: [
-    {
-      title: 'General',
-      items: [
-        {
-          title: 'Dashboard',
-          url: '/',
-          icon: LayoutDashboard,
-        },
-        {
-          title: 'Tasks',
-          url: '/tasks',
-          icon: ListTodo,
-        },
-        {
-          title: 'Apps',
-          url: '/apps',
-          icon: Package,
-        },
-        {
-          title: 'Chats',
-          url: '/chats',
-          badge: '3',
-          icon: MessagesSquare,
-        },
-        {
-          title: 'Users',
-          url: '/users',
-          icon: Users,
-        },
-        {
-          title: 'Secured by Clerk',
-          icon: ClerkLogo,
-          items: [
-            {
-              title: 'Sign In',
-              url: '/clerk/sign-in',
-            },
-            {
-              title: 'Sign Up',
-              url: '/clerk/sign-up',
-            },
-            {
-              title: 'User Management',
-              url: '/clerk/user-management',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: 'Pages',
-      items: [
-        {
-          title: 'Auth',
-          icon: ShieldCheck,
-          items: [
-            {
-              title: 'Sign In',
-              url: '/sign-in',
-            },
-            {
-              title: 'Sign In (2 Col)',
-              url: '/sign-in-2',
-            },
-            {
-              title: 'Sign Up',
-              url: '/sign-up',
-            },
-            {
-              title: 'Forgot Password',
-              url: '/forgot-password',
-            },
-            {
-              title: 'OTP',
-              url: '/otp',
-            },
-          ],
-        },
-        {
-          title: 'Errors',
-          icon: Bug,
-          items: [
-            {
-              title: 'Unauthorized',
-              url: '/errors/unauthorized',
-              icon: Lock,
-            },
-            {
-              title: 'Forbidden',
-              url: '/errors/forbidden',
-              icon: UserX,
-            },
-            {
-              title: 'Not Found',
-              url: '/errors/not-found',
-              icon: FileX,
-            },
-            {
-              title: 'Internal Server Error',
-              url: '/errors/internal-server-error',
-              icon: ServerOff,
-            },
-            {
-              title: 'Maintenance Error',
-              url: '/errors/maintenance-error',
-              icon: Construction,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: 'Other',
-      items: [
-        {
-          title: 'Settings',
-          icon: Settings,
-          items: [
-            {
-              title: 'Profile',
-              url: '/settings',
-              icon: UserCog,
-            },
-            {
-              title: 'Account',
-              url: '/settings/account',
-              icon: Wrench,
-            },
-            {
-              title: 'Appearance',
-              url: '/settings/appearance',
-              icon: Palette,
-            },
-            {
-              title: 'Notifications',
-              url: '/settings/notifications',
-              icon: Bell,
-            },
-            {
-              title: 'Display',
-              url: '/settings/display',
-              icon: Monitor,
-            },
-          ],
-        },
-        {
-          title: 'Help Center',
-          url: '/help-center',
-          icon: HelpCircle,
-        },
-      ],
-    },
-  ],
+  teams: teams,
+  // Default to esure
+  navMain: navEsure, 
 }

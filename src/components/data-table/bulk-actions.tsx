@@ -79,7 +79,7 @@ export function DataTableBulkActions<TData>({
         buttons[prevIndex]?.focus()
         break
       }
-      case 'Home':
+      case 'Trang chủ':
         event.preventDefault()
         buttons[0]?.focus()
         break

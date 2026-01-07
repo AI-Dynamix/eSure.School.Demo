@@ -16,7 +16,7 @@ export function SignUp() {
       <Card className='gap-4'>
         <CardHeader>
           <CardTitle className='text-lg tracking-tight'>
-            Create an account
+            Tạo tài khoản
           </CardTitle>
           <CardDescription>
             Enter your email and password to create an account. <br />
@@ -25,7 +25,7 @@ export function SignUp() {
               to='/sign-in'
               className='underline underline-offset-4 hover:text-primary'
             >
-              Sign In
+              Đăng nhập
             </Link>
           </CardDescription>
         </CardHeader>

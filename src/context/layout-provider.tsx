@@ -23,6 +23,9 @@ type LayoutContextType = {
   defaultVariant: Variant
   variant: Variant
   setVariant: (variant: Variant) => void
+
+  role: string
+  setRole: (role: string) => void
 }
 
 const LayoutContext = createContext<LayoutContextType | null>(null)
@@ -42,6 +45,12 @@ export function LayoutProvider({ children }: LayoutProviderProps) {
     return (saved as Variant) || DEFAULT_VARIANT
   })
 
+  // Role state (default to esure_admin)
+  const [role, _setRole] = useState<string>(() => {
+    const saved = typeof window !== 'undefined' ? localStorage.getItem('role') : null
+    return saved || 'esure_admin'
+  })
+
   const setCollapsible = (newCollapsible: Collapsible) => {
     _setCollapsible(newCollapsible)
     setCookie(
@@ -54,6 +63,13 @@ export function LayoutProvider({ children }: LayoutProviderProps) {
   const setVariant = (newVariant: Variant) => {
     _setVariant(newVariant)
     setCookie(LAYOUT_VARIANT_COOKIE_NAME, newVariant, LAYOUT_COOKIE_MAX_AGE)
+  }
+
+  const setRole = (newRole: string) => {
+    _setRole(newRole)
+    if (typeof window !== 'undefined') {
+        localStorage.setItem('role', newRole)
+    }
   }
 
   const resetLayout = () => {
@@ -69,6 +85,8 @@ export function LayoutProvider({ children }: LayoutProviderProps) {
     defaultVariant: DEFAULT_VARIANT,
     variant,
     setVariant,
+    role,
+    setRole,
   }
 
   return <LayoutContext value={contextValue}>{children}</LayoutContext>

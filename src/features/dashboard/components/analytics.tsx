@@ -132,7 +132,7 @@ export function Analytics() {
         <Card className='col-span-1 lg:col-span-3'>
           <CardHeader>
             <CardTitle>Devices</CardTitle>
-            <CardDescription>How users access your app</CardDescription>
+            <CardDescription>Cách người dùng truy cập ứng dụng</CardDescription>
           </CardHeader>
           <CardContent>
             <SimpleBarList

@@ -17,15 +17,15 @@ import {
 const items = [
   {
     id: 'recents',
-    label: 'Recents',
+    label: 'Gần đây',
   },
   {
     id: 'home',
-    label: 'Home',
+    label: 'Trang chủ',
   },
   {
     id: 'applications',
-    label: 'Applications',
+    label: 'Ứng dụng',
   },
   {
     id: 'desktop',
@@ -33,17 +33,17 @@ const items = [
   },
   {
     id: 'downloads',
-    label: 'Downloads',
+    label: 'Tải xuống',
   },
   {
     id: 'documents',
-    label: 'Documents',
+    label: 'Tài liệu',
   },
 ] as const
 
 const displayFormSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
-    message: 'You have to select at least one item.',
+    message: 'Bạn phải chọn ít nhất một mục.',
   }),
 })
 
@@ -72,9 +72,9 @@ export function DisplayForm() {
           render={() => (
             <FormItem>
               <div className='mb-4'>
-                <FormLabel className='text-base'>Sidebar</FormLabel>
+                <FormLabel className='text-base'>Thanh bên</FormLabel>
                 <FormDescription>
-                  Select the items you want to display in the sidebar.
+                  Chọn các mục bạn muốn hiển thị trên thanh bên.
                 </FormDescription>
               </div>
               {items.map((item) => (
@@ -114,7 +114,7 @@ export function DisplayForm() {
             </FormItem>
           )}
         />
-        <Button type='submit'>Update display</Button>
+        <Button type='submit'>Cập nhật hiển thị</Button>
       </form>
     </Form>
   )

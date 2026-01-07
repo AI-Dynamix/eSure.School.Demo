@@ -80,16 +80,16 @@ export function DataTableBulkActions<TData>({
                   variant='outline'
                   size='icon'
                   className='size-8'
-                  aria-label='Update status'
-                  title='Update status'
+                  aria-label='Cập nhật trạng thái'
+                  title='Cập nhật trạng thái'
                 >
                   <CircleArrowUp />
-                  <span className='sr-only'>Update status</span>
+                  <span className='sr-only'>Cập nhật trạng thái</span>
                 </Button>
               </DropdownMenuTrigger>
             </TooltipTrigger>
             <TooltipContent>
-              <p>Update status</p>
+              <p>Cập nhật trạng thái</p>
             </TooltipContent>
           </Tooltip>
           <DropdownMenuContent sideOffset={14}>
