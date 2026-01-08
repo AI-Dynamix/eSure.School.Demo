@@ -12,7 +12,7 @@ import {
 } from '@tabler/icons-react'
 
 // Role definitions
-export type UserRole = 'esure_admin' | 'agency_admin' | 'school_admin'
+export type UserRole = 'esure_admin' | 'agency_admin' | 'school_admin' | 'ssc_admin'
 
 export interface Team {
   name: string
@@ -33,6 +33,12 @@ export const teams: Team[] = [
     logo: '/images/favicon.png',
     plan: 'Management Agency',
     role: 'agency_admin',
+  },
+  {
+    name: 'SSC Admin',
+    logo: '/images/favicon.png',
+    plan: 'SSC Management',
+    role: 'ssc_admin',
   },
   {
     name: 'Trường THCS Lê Văn Tám',
@@ -110,6 +116,25 @@ const navAgency = [
   },
 ]
 
+// Navigation for SSC Admin
+const navSSC = [
+  {
+    title: 'Tổng quan (SSC)',
+    url: '/',
+    icon: IconDashboard,
+  },
+  {
+    title: 'Danh sách Trường',
+    url: '/schools',
+    icon: IconSchool,
+  },
+  {
+    title: 'Báo cáo',
+    url: '/reports',
+    icon: IconReportAnalytics,
+  },
+]
+
 // Navigation for School Admin (Nhà trường)
 const navSchool = [
   {
@@ -139,6 +164,7 @@ export const getNavByRole = (role: string) => {
     case 'esure_admin': return navEsure
     case 'agency_admin': return navAgency
     case 'school_admin': return navSchool
+    case 'ssc_admin': return navSSC
     default: return navEsure
   }
 }
