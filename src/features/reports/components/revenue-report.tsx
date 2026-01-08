@@ -11,7 +11,7 @@ const data = [
 
 export function RevenueReport() {
   return (
-    <ResponsiveContainer width='100%' height={350}>
+    <ResponsiveContainer width='100%' height={350} minHeight={0}>
       <BarChart data={data}>
         <CartesianGrid strokeDasharray="3 3" vertical={false} />
         <XAxis

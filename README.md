@@ -1,119 +1,81 @@
-# Shadcn Admin Dashboard
+# eSure School - Hệ thống Quản lý và Phân phối Bảo hiểm Học đường
 
-Admin Dashboard UI crafted with Shadcn and Vite. Built with responsiveness and accessibility in mind.
+eSure School là một nền tảng Dashboard quản lý toàn diện dành cho việc phân phối, theo dõi và quản lý bảo hiểm học sinh (BHYT và Bảo hiểm tự nguyện) tại các trường học. Hệ thống được thiết kế để phục vụ đa dạng các cấp quản lý từ Nhà trường, Sở Giáo dục & Đào tạo (Sở GD), đến các đơn vị Bảo hiểm (SSC) và Quản trị viên hệ thống (eSure Admin).
 
-![alt text](public/images/shadcn-admin.png)
+![Dashboard Screenshot](public/images/dashboard-preview.png)
 
-[![Sponsored by Clerk](https://img.shields.io/badge/Sponsored%20by-Clerk-5b6ee1?logo=clerk)](https://go.clerk.com/GttUAaK)
+## 🚀 Tính năng chính
 
-I've been creating dashboard UIs at work and for my personal projects. I always wanted to make a reusable collection of dashboard UI for future projects; and here it is now. While I've created a few custom components, some of the code is directly adapted from ShadcnUI examples.
+Hệ thống cung cấp các giao diện và chức năng chuyên biệt cho từng nhóm người dùng:
 
-> This is not a starter project (template) though. I'll probably make one in the future.
+### 1. 🏫 School Admin (Quản lý Trường học)
+- **Tổng quan trường học**: Xem thống kê sĩ số, tỷ lệ tham gia BHYT và BH tự nguyện.
+- **Quản lý lớp học**: Theo dõi chi tiết từng khối/lớp, danh sách học sinh chưa tham gia bảo hiểm.
+- **Báo cáo**: Xuất báo cáo tình hình tham gia bảo hiểm của học sinh.
 
-## Features
+### 2. 🏢 Agency Admin (Sở/Phòng GD&ĐT)
+- **Tổng quan toàn tỉnh/thành**: Cái nhìn bao quát về tình hình tham gia bảo hiểm của tất cả các trường trong khu vực quản lý.
+- **Bảng xếp hạng**: Theo dõi các trường dẫn đầu và các trường cần vận động thêm.
+- **Quản lý địa bàn**: Dữ liệu chi tiết theo từng Quận/Huyện.
 
-- Light/dark mode
-- Responsive
-- Accessible
-- With built-in Sidebar component
-- Global search command
-- 10+ pages
-- Extra custom components
-- RTL support
+### 3. 🛡️ SSC Admin (Đơn vị Bảo hiểm)
+- **Doanh thu & Hiệu quả**: Theo dõi doanh thu Gross/Net, hoa hồng, và số lượng đơn hàng.
+- **Phân khúc khách hàng**: Phân tích trường học theo các phân khúc (Gold, Silver, At-risk) để có chiến lược tiếp cận phù hợp.
+- **Sản phẩm**: Quản lý hiệu quả của từng gói sản phẩm bảo hiểm.
 
-<details>
-<summary>Customized Components (click to expand)</summary>
+### 4. ⚡ eSure Admin (Quản trị hệ thống)
+- **Quản trị đối tác**: Quản lý danh sách Payment Gateway, Công ty bảo hiểm gốc (PVI, Bảo Việt, etc.).
+- **Cấu hình sản phẩm**: Thiết lập các gói bảo hiểm, mức phí và hoa hồng.
+- **Báo cáo tài chính**: P&L Statement, dòng tiền và đối soát.
 
-This project uses Shadcn UI components, but some have been slightly modified for better RTL (Right-to-Left) support and other improvements. These customized components differ from the original Shadcn UI versions.
+## 🛠️ Công nghệ sử dụng
 
-If you want to update components using the Shadcn CLI (e.g., `npx shadcn@latest add <component>`), it's generally safe for non-customized components. For the listed customized ones, you may need to manually merge changes to preserve the project's modifications and avoid overwriting RTL support or other updates.
+Dự án được xây dựng dựa trên các công nghệ hiện đại, tối ưu cho hiệu năng và trải nghiệm người dùng:
 
-> If you don't require RTL support, you can safely update the 'RTL Updated Components' via the Shadcn CLI, as these changes are primarily for RTL compatibility. The 'Modified Components' may have other customizations to consider.
+- **Frontend Core**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **UI Framework**: [Tailwind CSS](https://tailwindcss.com/) + [Shadcn UI](https://ui.shadcn.com/)
+- **Routing**: [TanStack Router](https://tanstack.com/router/)
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **Charts**: [Recharts](https://recharts.org/)
+- **Icons**: [Lucide React](https://lucide.dev/)
 
-### Modified Components
+## 📦 Cài đặt và Chạy dự án
 
-- scroll-area
-- sonner
-- separator
+Yêu cầu: Node.js (version 18+ recommended)
 
-### RTL Updated Components
+1. **Clone dự án:**
+   ```bash
+   git clone <repository-url>
+   cd esure-school
+   ```
 
-- alert-dialog
-- calendar
-- command
-- dialog
-- dropdown-menu
-- select
-- table
-- sheet
-- sidebar
-- switch
+2. **Cài đặt dependencies:**
+   ```bash
+   npm install
+   # hoặc
+   pnpm install
+   ```
 
-**Notes:**
+3. **Chạy môi trường phát triển (Development):**
+   ```bash
+   npm run dev
+   ```
+   Truy cập `http://localhost:5173` để xem ứng dụng.
 
-- **Modified Components**: These have general updates, potentially including RTL adjustments.
-- **RTL Updated Components**: These have specific changes for RTL language support (e.g., layout, positioning).
-- For implementation details, check the source files in `src/components/ui/`.
-- All other Shadcn UI components in the project are standard and can be safely updated via the CLI.
+4. **Build cho Production:**
+   ```bash
+   npm run build
+   ```
 
-</details>
+## 📂 Cấu trúc dự án
 
-## Tech Stack
+- `src/features`: Chứa các module chức năng chính (Dashboard, Schools, Reports, Orders, etc.).
+- `src/components`: Các UI component tái sử dụng (Button, Card, Table, etc.).
+- `src/data`: Mock data và các loader dữ liệu (dữ liệu trường học, địa chính).
+- `src/types`: Định nghĩa các kiểu dữ liệu TypeScript.
+- `src/routes`: Cấu hình routing của ứng dụng.
 
-**UI:** [ShadcnUI](https://ui.shadcn.com) (TailwindCSS + RadixUI)
+## 📝 License
 
-**Build Tool:** [Vite](https://vitejs.dev/)
-
-**Routing:** [TanStack Router](https://tanstack.com/router/latest)
-
-**Type Checking:** [TypeScript](https://www.typescriptlang.org/)
-
-**Linting/Formatting:** [ESLint](https://eslint.org/) & [Prettier](https://prettier.io/)
-
-**Icons:** [Lucide Icons](https://lucide.dev/icons/), [Tabler Icons](https://tabler.io/icons) (Brand icons only)
-
-**Auth (partial):** [Clerk](https://go.clerk.com/GttUAaK)
-
-## Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/satnaing/shadcn-admin.git
-```
-
-Go to the project directory
-
-```bash
-  cd shadcn-admin
-```
-
-Install dependencies
-
-```bash
-  pnpm install
-```
-
-Start the server
-
-```bash
-  pnpm run dev
-```
-
-## Sponsoring this project ❤️
-
-If you find this project helpful or use this in your own work, consider [sponsoring me](https://github.com/sponsors/satnaing) to support development and maintenance. You can [buy me a coffee](https://buymeacoffee.com/satnaing) as well. Don’t worry, every penny helps. Thank you! 🙏
-
-For questions or sponsorship inquiries, feel free to reach out at [satnaingdev@gmail.com](mailto:satnaingdev@gmail.com).
-
-### Current Sponsor
-
-- [Clerk](https://go.clerk.com/GttUAaK) - authentication and user management for the modern web
-
-## Author
-
-Crafted with 🤍 by [@satnaing](https://github.com/satnaing)
-
-## License
-
-Licensed under the [MIT License](https://choosealicense.com/licenses/mit/)
+Dự án này là tài sản nội bộ của eSure.

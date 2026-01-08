@@ -20,7 +20,7 @@ export function OrderTrendCharts() {
         </CardHeader>
         <CardContent>
           <div className='h-[200px] w-full min-w-0'>
-            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0} debounce={100}>
+            <ResponsiveContainer width="99%" height="100%" minWidth={0} minHeight={0} debounce={100}>
               <BarChart data={trendData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="name" fontSize={10} tickLine={false} axisLine={false} />
@@ -42,7 +42,7 @@ export function OrderTrendCharts() {
         </CardHeader>
         <CardContent>
           <div className='h-[200px] w-full min-w-0'>
-            <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={0} debounce={100}>
+            <ResponsiveContainer width="99%" height="100%" minWidth={0} minHeight={0} debounce={100}>
               <LineChart data={trendData}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                 <XAxis dataKey="name" fontSize={10} tickLine={false} axisLine={false} />

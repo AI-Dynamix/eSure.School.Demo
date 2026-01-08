@@ -41,7 +41,7 @@ export function Partners() {
           <KPICard variant="compact"
             title='Payment Gateway'
             value={paymentGateways.length}
-            subtitle='SSC, VNPT VneDu'
+            subtitle='SSC, Đối tác 2'
             icon={<CreditCard className='h-4 w-4' />}
           />
           <KPICard variant="compact"

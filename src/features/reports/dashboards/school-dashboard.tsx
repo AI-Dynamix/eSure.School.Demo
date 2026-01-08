@@ -1,24 +1,54 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import { Badge } from '@/components/ui/badge'
 import { SCHOOL_LEVELS, SchoolLevel } from '@/data/classes'
 
 // ...
 
-export function SchoolDashboard() {
-  // ... existing code ...
+import { generateClasses } from '@/data/mock-dashboard-data'
+import { useMemo } from 'react'
 
-  // Group by Grade Helper
+import { type SchoolBase } from '@/data/vn-schools-loader'
+
+interface SchoolDashboardProps {
+  school: SchoolBase
+}
+
+export function SchoolDashboard({ school }: SchoolDashboardProps) {
+  // Generate mock class data based on the specific school's level
+  const classes = useMemo(() => {
+    // Determine levels to generate based on school level
+    const levelsToGenerate: ('Tiểu học' | 'THCS' | 'THPT')[] = []
+    
+    if (school.level === 'Tiểu học') levelsToGenerate.push('Tiểu học')
+    else if (school.level === 'THCS') levelsToGenerate.push('THCS')
+    else if (school.level === 'THPT') levelsToGenerate.push('THPT')
+    else {
+         // Fallback or multi-level logic if needed
+         levelsToGenerate.push('Tiểu học', 'THCS', 'THPT') 
+    }
+
+    return levelsToGenerate.flatMap(level => 
+      generateClasses(school.id, level)
+    )
+  }, [school])
   const getGradeBreakdown = (levelId: SchoolLevel) => {
     const levelInfo = SCHOOL_LEVELS.find(l => l.id === levelId)
     if (!levelInfo) return []
     
+    // Map levelId to data level string
+    const dataLevel = levelId === 'tieu_hoc' ? 'Tiểu học' : levelId === 'thcs' ? 'THCS' : 'THPT'
+
     return levelInfo.grades.map(g => {
-      const gradeClasses = classes.filter(c => c.grade === g && c.level === levelId)
+      // Cast grade string to number for comparison
+      const gradeClasses = classes.filter(c => c.grade === Number(g) && c.level === dataLevel)
       // Only include grades that have classes
       if (gradeClasses.length === 0) return null
 
-      const size = gradeClasses.reduce((sum, c) => sum + c.declaredSize, 0)
+      const size = gradeClasses.reduce((sum, c) => sum + c.totalStudents, 0)
       const bhyt = gradeClasses.reduce((sum, c) => sum + c.bhytCount, 0)
-      const voluntary = gradeClasses.reduce((sum, c) => sum + c.orderCount, 0)
+      const voluntary = gradeClasses.reduce((sum, c) => sum + c.voluntaryInsCount, 0)
       const vRate = size ? ((voluntary / size) * 100).toFixed(1) : '0.0'
       return {
         grade: `Khối ${g}`,
@@ -45,10 +75,11 @@ export function SchoolDashboard() {
           <CardTitle>Chi tiết theo Khối (Sĩ số khai báo)</CardTitle>
         </CardHeader>
         <CardContent>
-          <Tabs defaultValue="tieu_hoc" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 lg:w-[400px]">
-              <TabsTrigger value="tieu_hoc">Tiểu học</TabsTrigger>
-              <TabsTrigger value="thcs">THCS</TabsTrigger>
+          <Tabs defaultValue={school.level === 'Tiểu học' ? 'tieu_hoc' : school.level === 'THCS' ? 'thcs' : 'thpt'} className="w-full">
+            <TabsList className="grid w-full grid-cols-3 lg:w-[400px]">
+              <TabsTrigger value="tieu_hoc" disabled={school.level !== 'Tiểu học'}>Tiểu học</TabsTrigger>
+              <TabsTrigger value="thcs" disabled={school.level !== 'THCS'}>THCS</TabsTrigger>
+              <TabsTrigger value="thpt" disabled={school.level !== 'THPT'}>THPT</TabsTrigger>
             </TabsList>
             
             <TabsContent value="tieu_hoc">
@@ -89,7 +120,6 @@ export function SchoolDashboard() {
             <TabsContent value="thcs">
               <div className="overflow-x-auto">
                 <Table>
-                  {/* ... table content ... */}
                   <TableHeader>
                     <TableRow>
                       <TableHead>Khối</TableHead>
@@ -113,6 +143,40 @@ export function SchoolDashboard() {
                         <TableRow>
                             <TableCell colSpan={5} className="text-center text-muted-foreground h-24">
                                 Không có dữ liệu khối THCS
+                            </TableCell>
+                        </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="thpt">
+              <div className="overflow-x-auto">
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Khối</TableHead>
+                      <TableHead className='text-right'>Sĩ số khai báo</TableHead>
+                      <TableHead className='text-right'>BHYT</TableHead>
+                      <TableHead className='text-right'>Đơn BH TN</TableHead>
+                      <TableHead className='text-right'>Tỷ lệ TN</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {getGradeBreakdown('thpt').map((g) => (
+                      <TableRow key={g.grade}>
+                        <TableCell className='font-medium'>{g.grade}</TableCell>
+                        <TableCell className='text-right'>{g.totalStudents.toLocaleString('vi-VN')}</TableCell>
+                        <TableCell className='text-right'>{g.bhytCount.toLocaleString('vi-VN')}</TableCell>
+                        <TableCell className='text-right'>{g.voluntaryCount.toLocaleString('vi-VN')}</TableCell>
+                        <TableCell className='text-right'><Badge variant='secondary'>{g.voluntaryRate}%</Badge></TableCell>
+                      </TableRow>
+                    ))}
+                    {getGradeBreakdown('thpt').length === 0 && (
+                        <TableRow>
+                            <TableCell colSpan={5} className="text-center text-muted-foreground h-24">
+                                Không có dữ liệu khối THPT
                             </TableCell>
                         </TableRow>
                     )}

@@ -9,7 +9,7 @@ const COLORS = ['#22c55e', '#ef4444'];
 
 export function ParticipationReport() {
   return (
-    <ResponsiveContainer width="100%" height={350}>
+    <ResponsiveContainer width="100%" height={350} minHeight={0}>
       <PieChart>
         <Pie
           data={data}

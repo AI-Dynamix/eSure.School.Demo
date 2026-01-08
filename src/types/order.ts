@@ -8,7 +8,7 @@ export type OrderStatus =
   | 'expired'           // Hết hạn
   | 'cancelled'         // Đã hủy
 
-export type PaymentChannel = 'SSC' | 'VNPT VneDu' | 'GoTrust Edupay' | 'Direct'
+export type PaymentChannel = 'SSC' | 'Đối tác 2' | 'Đối tác 3' | 'Direct'
 
 export interface Order {
   id: string

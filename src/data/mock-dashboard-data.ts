@@ -123,6 +123,7 @@ export const generateClasses = (schoolId: string, level: string): ClassInfo[] =>
       classes.push({
         id: `${schoolId}-${grade}${String.fromCharCode(64 + c)}`,
         name: `${grade}${String.fromCharCode(64 + c)}`,
+        level: level as 'Mầm non' | 'Tiểu học' | 'THCS' | 'THPT',
         grade,
         totalStudents,
         bhytCount,
@@ -182,7 +183,7 @@ export const getESureMetrics = (): ESureMetrics => ({
 
 export const getRevenueByChannel = (): RevenueBreakdown[] => [
   { channel: 'SSC', policies: 58950, revenue: 7_500_000_000, percentage: 60, commissionRate: 5, commissionAmount: 375_000_000 },
-  { channel: 'VNPT VneDu', policies: 29475, revenue: 3_750_000_000, percentage: 30, commissionRate: 6, commissionAmount: 225_000_000 },
+  { channel: 'Đối tác 2', policies: 29475, revenue: 3_750_000_000, percentage: 30, commissionRate: 6, commissionAmount: 225_000_000 },
   { channel: 'Cổng trực tiếp', policies: 9825, revenue: 1_250_000_000, percentage: 10, commissionRate: 0, commissionAmount: 0 }
 ]
 
@@ -203,7 +204,7 @@ export const getPLStatement = (): PLStatement[] => [
   { item: 'Doanh thu Gross', currentMonth: 1_850_000_000, percentRevenue: 100, lastMonth: 1_720_000_000, changePercent: 7.6 },
   { item: 'Phí BH gốc', currentMonth: -1_435_000_000, percentRevenue: 77.6, lastMonth: -1_334_000_000, changePercent: 7.6 },
   { item: 'Doanh thu Net', currentMonth: 415_000_000, percentRevenue: 22.4, lastMonth: 386_000_000, changePercent: 7.5 },
-  { item: 'Hoa hồng SSC/VNPT', currentMonth: -92_000_000, percentRevenue: 5.0, lastMonth: -86_000_000, changePercent: 7.0 },
+  { item: 'Hoa hồng SSC/Đối tác 2', currentMonth: -92_000_000, percentRevenue: 5.0, lastMonth: -86_000_000, changePercent: 7.0 },
   { item: 'Chi phí nhân sự', currentMonth: -85_000_000, percentRevenue: 4.6, lastMonth: -85_000_000, changePercent: 0 },
   { item: 'Chi phí IT', currentMonth: -25_000_000, percentRevenue: 1.4, lastMonth: -25_000_000, changePercent: 0 },
   { item: 'Marketing', currentMonth: -35_000_000, percentRevenue: 1.9, lastMonth: -42_000_000, changePercent: -16.7 },
@@ -216,6 +217,43 @@ export const getRevenueTimeSeries = (): TimeSeriesData[] =>
     value: randomInt(1_200_000_000, 2_100_000_000),
     label: formatCurrency(randomInt(1_200_000_000, 2_100_000_000))
   }))
+
+// =============================================================================
+// SSC METRICS (Subset of eSure)
+// =============================================================================
+// SSC represents about 60% of volume
+
+export const getSSCMetrics = (): ESureMetrics => ({
+    grossRevenue: 7_500_000_000,
+    netRevenue: 1_680_000_000,
+    commission: 375_000_000,
+    totalPolicies: 58950,
+    activeSchools: 125,
+    avgPremium: 127000,
+    vsLastMonth: 5.4,
+    vsLastYear: 12,
+    vsTarget: 89.1
+})
+
+export const getSSCSchoolSegments = (): SchoolSegment[] => [
+    { segment: 'Gold', definition: 'TG > 80%, DT > 100tr', schoolCount: 28, revenuePercentage: 55, strategy: 'Duy trì & CSKH VIP' },
+    { segment: 'Silver', definition: 'TG 50-80%, DT 30-100tr', schoolCount: 45, revenuePercentage: 32, strategy: 'Thúc đẩy tái tục' },
+    { segment: 'Bronze', definition: 'TG 20-50%, DT < 30tr', schoolCount: 38, revenuePercentage: 11, strategy: 'Hỗ trợ nghiệp vụ' },
+    { segment: 'At-risk', definition: 'TG < 20%', schoolCount: 14, revenuePercentage: 2, strategy: 'Khảo sát khó khăn' }
+]
+
+// Simplified P&L for SSC Admin viewpoint (Revenue - Costs)
+export const getSSCPLStatement = (): PLStatement[] => [
+    { item: 'Doanh thu Gross (SSC)', currentMonth: 1_110_000_000, percentRevenue: 100, lastMonth: 1_050_000_000, changePercent: 5.7 },
+  //  { item: 'Phí BH gốc', currentMonth: -861_000_000, percentRevenue: 77.6, lastMonth: -814_000_000, changePercent: 5.8 },
+  // SSC doesn't care about insurer premium remittance as much, but maybe their Net Commission?
+  // Let's assume SSC views their Revenue share.
+  // Actually usually they see Gross and Commission.
+    { item: 'Hoa hồng nhận', currentMonth: 185_000_000, percentRevenue: 16.6, lastMonth: 175_000_000, changePercent: 5.7 },
+    { item: 'Chi phí vận hành', currentMonth: -45_000_000, percentRevenue: 4.1, lastMonth: -42_000_000, changePercent: 7.1 },
+    { item: 'Lợi nhuận ròng', currentMonth: 140_000_000, percentRevenue: 12.6, lastMonth: 133_000_000, changePercent: 5.2 }
+]
+
 
 // =============================================================================
 // PARTNER METRICS

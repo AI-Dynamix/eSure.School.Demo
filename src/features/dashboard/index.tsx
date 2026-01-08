@@ -14,7 +14,18 @@ export function Dashboard() {
   const getDashboardContent = () => {
     switch (role) {
       case 'school_admin':
-        return <SchoolDashboard />
+        return <SchoolDashboard school={{
+            id: 'SCH-CURRENT',
+            name: 'THPT Nguyễn Thượng Hiền',
+            level: 'THPT',
+            province: 'Thành phố Hồ Chí Minh',
+            district: 'Tân Bình',
+            isNational: false,
+            totalStudents: 2450,
+            participationRate: 98.5,
+            principalName: 'Nguyễn Văn A',
+            principalPhone: '0901234567'
+        }} />
       case 'agency_admin':
         return <SoGDDashboard />
       case 'ssc_admin':

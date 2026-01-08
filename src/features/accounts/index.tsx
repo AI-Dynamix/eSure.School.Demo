@@ -65,7 +65,7 @@ export function Accounts() {
           <KPICard variant="compact"
             title='Phải thu (AR)'
             value={formatCurrency(summary.ar.pending)}
-            subtitle={`SSC + VNPT VneDu`}
+            subtitle={`SSC + Đối tác 2`}
             icon={<ArrowDownLeft className='h-4 w-4 text-green-500' />}
           />
           <KPICard variant="compact"
@@ -77,7 +77,7 @@ export function Accounts() {
           <KPICard variant="compact"
             title='Phải trả Hoa hồng'
             value={formatCurrency(summary.apCommission.pending)}
-            subtitle='SSC, VNPT'
+            subtitle='SSC, Đối tác 2'
             icon={<Wallet className='h-4 w-4' />}
           />
           <KPICard variant="compact"
@@ -136,7 +136,7 @@ export function Accounts() {
               <CardHeader>
                 <CardTitle>Phải thu từ Gateway</CardTitle>
                 <CardDescription>
-                  Tiền thu hộ từ SSC và VNPT VneDu
+                  Tiền thu hộ từ SSC và Đối tác 2
                 </CardDescription>
               </CardHeader>
               <CardContent>

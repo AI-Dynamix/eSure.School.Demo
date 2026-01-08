@@ -9,6 +9,8 @@ import { InsurerDashboard } from './dashboards/insurer-dashboard'
 import { PartnerDashboard } from './dashboards/partner-dashboard'
 import { AgencyReports } from './dashboards/agency-reports'
 import { SchoolReports } from './dashboards/school-reports'
+import { SSCDashboard } from './dashboards/ssc-dashboard'
+import { SSCSoGDReports, SSCSchoolReports } from './dashboards/ssc-reports-helpers'
 
 import { useState, useMemo } from 'react'
 import { allSchools, getProvinceList } from '@/data/vn-schools-loader'
@@ -36,6 +38,7 @@ export function Reports() {
     switch (role) {
       case 'school_admin': return 'Báo cáo Nhà trường'
       case 'agency_admin': return 'Báo cáo Sở GD&ĐT TP.HCM'
+      case 'ssc_admin': return 'Báo cáo SSC'
       case 'esure_admin': return 'Hệ thống báo cáo (eSure)'
       default: return 'Báo cáo'
     }
@@ -49,6 +52,41 @@ export function Reports() {
 
       case 'agency_admin':
         return <AgencyReports />
+
+      case 'ssc_admin':
+        // SSC Admin sees eSure-like dashboard (filtered), SoGD, and School tabs. No Partner/Insurer tabs.
+        return (
+          <Tabs defaultValue='ssc' className='space-y-4'>
+            <div className='w-full overflow-x-auto pb-2'>
+              <TabsList className="grid w-full grid-cols-3 lg:w-[480px]">
+                <TabsTrigger value='ssc'>Tổng quan</TabsTrigger>
+                <TabsTrigger value='so-gd'>Sở GD&ĐT</TabsTrigger>
+                <TabsTrigger value='school'>Nhà trường</TabsTrigger>
+              </TabsList>
+            </div>
+
+            <TabsContent value='ssc'>
+              {/* Reuse ESureDashboard but we might need to wrap it to mock data or pass props? 
+                  For now, let's use SSCDashboard but formatted like ESureDashboard as requested. 
+                  Actually, the user said "Report part of SSC is also like eSure". 
+                  Let's use SSCDashboard as the 'General' tab and ensure it matches ESure style.
+              */}
+              <SSCDashboard /> 
+            </TabsContent>
+
+            <TabsContent value='so-gd' className='space-y-4 pt-2'>
+               {/* Same filtering UI as eSure Admin, but maybe scope provinces? 
+                   For now, let's verify if AgencyReports accepts province. Yes. 
+                   We should filter the Province Select to only those managed by SSC.
+               */}
+               <SSCSoGDReports provinces={provinces} /> 
+            </TabsContent>
+
+            <TabsContent value='school' className='space-y-4 pt-2'>
+               <SSCSchoolReports provinces={provinces} />
+            </TabsContent>
+          </Tabs>
+        )
 
       case 'esure_admin':
       default:
@@ -177,6 +215,7 @@ export function Reports() {
     switch (role) {
       case 'school_admin': return 'Thống kê và báo cáo dữ liệu theo kỳ/năm'
       case 'agency_admin': return 'Dữ liệu các trường thuộc TP. Hồ Chí Minh'
+      case 'ssc_admin': return 'Báo cáo hiệu quả hoạt động và mạng lưới trường học (SSC)'
       case 'esure_admin': return 'Hệ thống báo cáo đa tầng cho các bên liên quan'
       default: return ''
     }

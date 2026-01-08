@@ -82,8 +82,8 @@ export function OrdersTable({ data }: OrdersTableProps) {
                 title: 'Kênh TT',
                 options: [
                     { label: 'SSC', value: 'SSC' },
-                    { label: 'VNPT VneDu', value: 'VNPT VneDu' },
-                    { label: 'GoTrust Edupay', value: 'GoTrust Edupay' },
+                    { label: 'Đối tác 2', value: 'Đối tác 2' },
+                    { label: 'Đối tác 3', value: 'Đối tác 3' },
                     { label: 'Trực tiếp', value: 'Direct' },
                 ]
             }

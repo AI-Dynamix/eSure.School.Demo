@@ -43,18 +43,18 @@ export const paymentGateways: PaymentGateway[] = [
     contactEmail: 'partner@ssc.vn', contactPhone: '028 38123456', status: 'active'
   },
   {
-    id: 'gw-vnpt', code: 'VNPT', name: 'VNPT VneDu', shortName: 'VNPT VneDu',
+    id: 'gw-partner2', code: 'PARTNER2', name: 'Đối tác 2', shortName: 'Đối tác 2',
     taxCode: '0100684378', bankAccount: '12510001234567', bankName: 'BIDV',
     commissionRate: 6.0, paymentCycle: 20, reconciliationDay: 10,
     regions: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17'],
-    contactEmail: 'edupay@vnpt.vn', contactPhone: '024 38123456', status: 'active'
+    contactEmail: 'edupay@partner2.vn', contactPhone: '024 38123456', status: 'active'
   },
   {
-    id: 'gw-gotrust', code: 'GOTRUST', name: 'GoTrust Edupay', shortName: 'GoTrust Edupay',
+    id: 'gw-partner3', code: 'PARTNER3', name: 'Đối tác 3', shortName: 'Đối tác 3',
     taxCode: '0315891234', bankAccount: '0071000987654', bankName: 'Vietcombank',
     commissionRate: 5.5, paymentCycle: 10, reconciliationDay: 30,
     regions: ['79', '80'], // Added TP.HCM and Long An as example regions
-    contactEmail: 'contact@gotrust.vn', contactPhone: '1900 123456', status: 'active'
+    contactEmail: 'contact@partner3.vn', contactPhone: '1900 123456', status: 'active'
   }
 ]
 

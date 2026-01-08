@@ -13,27 +13,27 @@ export interface Province {
   wardCount: number
   schoolCount: number
   studentCount: number
-  sscPartnerId: 'SSC' | 'VNPT'
+  sscPartnerId: 'SSC' | 'PARTNER2'
   status: 'active' | 'inactive'
 }
 
 export const provinces: Province[] = [
-  { code: '01', name: 'Hà Nội', nameEn: 'Hanoi', type: 'thanh_pho_trung_uong', region: 'bac', geoRegion: 'Đồng bằng sông Hồng', capital: 'Ba Đình', population: 8500000, area: 3359, wardCount: 579, schoolCount: 2850, studentCount: 2150000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '02', name: 'Hà Giang - Cao Bằng', nameEn: 'Ha Giang - Cao Bang', type: 'tinh', region: 'bac', geoRegion: 'Đông Bắc', capital: 'Hà Giang', population: 1650000, area: 14582, wardCount: 245, schoolCount: 580, studentCount: 285000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '03', name: 'Lào Cai - Yên Bái', nameEn: 'Lao Cai - Yen Bai', type: 'tinh', region: 'bac', geoRegion: 'Tây Bắc', capital: 'Lào Cai', population: 1580000, area: 12450, wardCount: 228, schoolCount: 520, studentCount: 268000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '04', name: 'Bắc Kạn - Tuyên Quang', nameEn: 'Bac Kan - Tuyen Quang', type: 'tinh', region: 'bac', geoRegion: 'Đông Bắc', capital: 'Tuyên Quang', population: 1120000, area: 10680, wardCount: 178, schoolCount: 385, studentCount: 195000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '05', name: 'Lạng Sơn - Bắc Giang', nameEn: 'Lang Son - Bac Giang', type: 'tinh', region: 'bac', geoRegion: 'Đông Bắc', capital: 'Bắc Giang', population: 2650000, area: 12180, wardCount: 315, schoolCount: 780, studentCount: 485000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '06', name: 'Thái Nguyên - Phú Thọ', nameEn: 'Thai Nguyen - Phu Tho', type: 'tinh', region: 'bac', geoRegion: 'Đông Bắc', capital: 'Thái Nguyên', population: 2580000, area: 9850, wardCount: 298, schoolCount: 720, studentCount: 465000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '07', name: 'Điện Biên - Lai Châu - Sơn La', nameEn: 'Dien Bien - Lai Chau - Son La', type: 'tinh', region: 'bac', geoRegion: 'Tây Bắc', capital: 'Sơn La', population: 2180000, area: 37250, wardCount: 425, schoolCount: 890, studentCount: 420000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '08', name: 'Hòa Bình - Vĩnh Phúc', nameEn: 'Hoa Binh - Vinh Phuc', type: 'tinh', region: 'bac', geoRegion: 'Tây Bắc', capital: 'Vĩnh Yên', population: 2050000, area: 6280, wardCount: 245, schoolCount: 580, studentCount: 365000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '09', name: 'Quảng Ninh', nameEn: 'Quang Ninh', type: 'tinh', region: 'bac', geoRegion: 'Đông Bắc', capital: 'Hạ Long', population: 1350000, area: 6178, wardCount: 186, schoolCount: 420, studentCount: 285000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '10', name: 'Hải Phòng', nameEn: 'Hai Phong', type: 'thanh_pho_trung_uong', region: 'bac', geoRegion: 'Đồng bằng sông Hồng', capital: 'Hồng Bàng', population: 2100000, area: 1561, wardCount: 217, schoolCount: 650, studentCount: 425000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '11', name: 'Hải Dương - Hưng Yên', nameEn: 'Hai Duong - Hung Yen', type: 'tinh', region: 'bac', geoRegion: 'Đồng bằng sông Hồng', capital: 'Hải Dương', population: 2980000, area: 2593, wardCount: 326, schoolCount: 850, studentCount: 520000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '12', name: 'Thái Bình - Nam Định', nameEn: 'Thai Binh - Nam Dinh', type: 'tinh', region: 'bac', geoRegion: 'Đồng bằng sông Hồng', capital: 'Nam Định', population: 3650000, area: 3210, wardCount: 385, schoolCount: 980, studentCount: 580000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '13', name: 'Hà Nam - Ninh Bình', nameEn: 'Ha Nam - Ninh Binh', type: 'tinh', region: 'bac', geoRegion: 'Đồng bằng sông Hồng', capital: 'Ninh Bình', population: 1850000, area: 2368, wardCount: 218, schoolCount: 520, studentCount: 325000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '14', name: 'Thanh Hóa', nameEn: 'Thanh Hoa', type: 'tinh', region: 'trung', geoRegion: 'Bắc Trung Bộ', capital: 'Thanh Hóa', population: 3680000, area: 11116, wardCount: 559, schoolCount: 1250, studentCount: 720000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '15', name: 'Nghệ An - Hà Tĩnh', nameEn: 'Nghe An - Ha Tinh', type: 'tinh', region: 'trung', geoRegion: 'Bắc Trung Bộ', capital: 'Vinh', population: 4550000, area: 22485, wardCount: 618, schoolCount: 1480, studentCount: 850000, sscPartnerId: 'VNPT', status: 'active' },
-  { code: '16', name: 'Quảng Bình - Quảng Trị', nameEn: 'Quang Binh - Quang Tri', type: 'tinh', region: 'trung', geoRegion: 'Bắc Trung Bộ', capital: 'Đồng Hới', population: 1680000, area: 13265, wardCount: 248, schoolCount: 520, studentCount: 295000, sscPartnerId: 'VNPT', status: 'active' },
+  { code: '01', name: 'Hà Nội', nameEn: 'Hanoi', type: 'thanh_pho_trung_uong', region: 'bac', geoRegion: 'Đồng bằng sông Hồng', capital: 'Ba Đình', population: 8500000, area: 3359, wardCount: 579, schoolCount: 2850, studentCount: 2150000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '02', name: 'Hà Giang - Cao Bằng', nameEn: 'Ha Giang - Cao Bang', type: 'tinh', region: 'bac', geoRegion: 'Đông Bắc', capital: 'Hà Giang', population: 1650000, area: 14582, wardCount: 245, schoolCount: 580, studentCount: 285000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '03', name: 'Lào Cai - Yên Bái', nameEn: 'Lao Cai - Yen Bai', type: 'tinh', region: 'bac', geoRegion: 'Tây Bắc', capital: 'Lào Cai', population: 1580000, area: 12450, wardCount: 228, schoolCount: 520, studentCount: 268000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '04', name: 'Bắc Kạn - Tuyên Quang', nameEn: 'Bac Kan - Tuyen Quang', type: 'tinh', region: 'bac', geoRegion: 'Đông Bắc', capital: 'Tuyên Quang', population: 1120000, area: 10680, wardCount: 178, schoolCount: 385, studentCount: 195000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '05', name: 'Lạng Sơn - Bắc Giang', nameEn: 'Lang Son - Bac Giang', type: 'tinh', region: 'bac', geoRegion: 'Đông Bắc', capital: 'Bắc Giang', population: 2650000, area: 12180, wardCount: 315, schoolCount: 780, studentCount: 485000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '06', name: 'Thái Nguyên - Phú Thọ', nameEn: 'Thai Nguyen - Phu Tho', type: 'tinh', region: 'bac', geoRegion: 'Đông Bắc', capital: 'Thái Nguyên', population: 2580000, area: 9850, wardCount: 298, schoolCount: 720, studentCount: 465000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '07', name: 'Điện Biên - Lai Châu - Sơn La', nameEn: 'Dien Bien - Lai Chau - Son La', type: 'tinh', region: 'bac', geoRegion: 'Tây Bắc', capital: 'Sơn La', population: 2180000, area: 37250, wardCount: 425, schoolCount: 890, studentCount: 420000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '08', name: 'Hòa Bình - Vĩnh Phúc', nameEn: 'Hoa Binh - Vinh Phuc', type: 'tinh', region: 'bac', geoRegion: 'Tây Bắc', capital: 'Vĩnh Yên', population: 2050000, area: 6280, wardCount: 245, schoolCount: 580, studentCount: 365000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '09', name: 'Quảng Ninh', nameEn: 'Quang Ninh', type: 'tinh', region: 'bac', geoRegion: 'Đông Bắc', capital: 'Hạ Long', population: 1350000, area: 6178, wardCount: 186, schoolCount: 420, studentCount: 285000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '10', name: 'Hải Phòng', nameEn: 'Hai Phong', type: 'thanh_pho_trung_uong', region: 'bac', geoRegion: 'Đồng bằng sông Hồng', capital: 'Hồng Bàng', population: 2100000, area: 1561, wardCount: 217, schoolCount: 650, studentCount: 425000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '11', name: 'Hải Dương - Hưng Yên', nameEn: 'Hai Duong - Hung Yen', type: 'tinh', region: 'bac', geoRegion: 'Đồng bằng sông Hồng', capital: 'Hải Dương', population: 2980000, area: 2593, wardCount: 326, schoolCount: 850, studentCount: 520000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '12', name: 'Thái Bình - Nam Định', nameEn: 'Thai Binh - Nam Dinh', type: 'tinh', region: 'bac', geoRegion: 'Đồng bằng sông Hồng', capital: 'Nam Định', population: 3650000, area: 3210, wardCount: 385, schoolCount: 980, studentCount: 580000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '13', name: 'Hà Nam - Ninh Bình', nameEn: 'Ha Nam - Ninh Binh', type: 'tinh', region: 'bac', geoRegion: 'Đồng bằng sông Hồng', capital: 'Ninh Bình', population: 1850000, area: 2368, wardCount: 218, schoolCount: 520, studentCount: 325000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '14', name: 'Thanh Hóa', nameEn: 'Thanh Hoa', type: 'tinh', region: 'trung', geoRegion: 'Bắc Trung Bộ', capital: 'Thanh Hóa', population: 3680000, area: 11116, wardCount: 559, schoolCount: 1250, studentCount: 720000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '15', name: 'Nghệ An - Hà Tĩnh', nameEn: 'Nghe An - Ha Tinh', type: 'tinh', region: 'trung', geoRegion: 'Bắc Trung Bộ', capital: 'Vinh', population: 4550000, area: 22485, wardCount: 618, schoolCount: 1480, studentCount: 850000, sscPartnerId: 'PARTNER2', status: 'active' },
+  { code: '16', name: 'Quảng Bình - Quảng Trị', nameEn: 'Quang Binh - Quang Tri', type: 'tinh', region: 'trung', geoRegion: 'Bắc Trung Bộ', capital: 'Đồng Hới', population: 1680000, area: 13265, wardCount: 248, schoolCount: 520, studentCount: 295000, sscPartnerId: 'PARTNER2', status: 'active' },
   { code: '17', name: 'Thừa Thiên Huế', nameEn: 'Thua Thien Hue', type: 'thanh_pho_trung_uong', region: 'trung', geoRegion: 'Bắc Trung Bộ', capital: 'Huế', population: 1180000, area: 5033, wardCount: 141, schoolCount: 380, studentCount: 225000, sscPartnerId: 'VNPT', status: 'active' },
   { code: '48', name: 'Đà Nẵng', nameEn: 'Da Nang', type: 'thanh_pho_trung_uong', region: 'trung', geoRegion: 'Nam Trung Bộ', capital: 'Hải Châu', population: 1250000, area: 1285, wardCount: 56, schoolCount: 420, studentCount: 285000, sscPartnerId: 'SSC', status: 'active' },
   { code: '49', name: 'Quảng Nam - Quảng Ngãi', nameEn: 'Quang Nam - Quang Ngai', type: 'tinh', region: 'trung', geoRegion: 'Nam Trung Bộ', capital: 'Tam Kỳ', population: 2780000, area: 15650, wardCount: 398, schoolCount: 920, studentCount: 485000, sscPartnerId: 'SSC', status: 'active' },
@@ -70,7 +70,7 @@ export const getProvinceSummary = () => ({
   },
   byPartner: {
     SSC: provinces.filter(p => p.sscPartnerId === 'SSC').length,
-    VNPT: provinces.filter(p => p.sscPartnerId === 'VNPT').length,
+    PARTNER2: provinces.filter(p => p.sscPartnerId === 'PARTNER2').length,
   },
   totalPopulation: provinces.reduce((sum, p) => sum + p.population, 0),
   totalSchools: provinces.reduce((sum, p) => sum + p.schoolCount, 0),

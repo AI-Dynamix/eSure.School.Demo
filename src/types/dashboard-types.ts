@@ -21,6 +21,7 @@ export interface School {
 export interface ClassInfo {
   id: string
   name: string
+  level?: 'Mầm non' | 'Tiểu học' | 'THCS' | 'THPT'
   grade: number
   totalStudents: number
   bhytCount: number
@@ -114,7 +115,7 @@ export interface PLStatement {
   changePercent: number
 }
 
-// Partner Dashboard (SSC/VNPT)
+// Partner Dashboard (SSC/PARTNER2)
 export interface PartnerMetrics {
   todayTransactions: number
   todayValue: number

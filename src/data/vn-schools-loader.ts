@@ -6,6 +6,7 @@ export interface SchoolBase {
   province: string
   district: string
   isNational: boolean // if true, belongs to "Trường trực thuộc sở"
+  level: 'Mầm non' | 'Tiểu học' | 'THCS' | 'THPT'
   totalStudents: number
   participationRate: number
   principalName: string
@@ -42,6 +43,15 @@ const generatePhone = (seed: string) => {
   return `09${Math.floor(seedRandom(seed + 'p') * 100000000).toString().padStart(8, '0')}`
 }
 
+const determineLevel = (name: string): 'Mầm non' | 'Tiểu học' | 'THCS' | 'THPT' => {
+    const n = name.toLowerCase()
+    if (n.includes('thpt') || n.includes('trung học phổ thông') || n.includes('cấp 3')) return 'THPT'
+    if (n.includes('thcs') || n.includes('trung học cơ sở') || n.includes('cấp 2')) return 'THCS'
+    if (n.includes('tiểu học') || n.includes('th ') || n.includes('cấp 1')) return 'Tiểu học'
+    if (n.includes('mầm non') || n.includes('mẫu giáo')) return 'Mầm non'
+    return 'Tiểu học' // Fallback
+}
+
 export const loadSchoolData = (): SchoolBase[] => {
   const schools: SchoolBase[] = []
 
@@ -62,6 +72,7 @@ export const loadSchoolData = (): SchoolBase[] => {
           province: provinceName,
           district: districtName,
           isNational: districtName === 'Trường trực thuộc sở',
+          level: determineLevel(name),
           totalStudents,
           participationRate: parseFloat(participationRate.toFixed(1)),
           principalName: generatePrincipalName(id),
