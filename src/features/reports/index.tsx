@@ -79,11 +79,11 @@ export function Reports() {
                    For now, let's verify if AgencyReports accepts province. Yes. 
                    We should filter the Province Select to only those managed by SSC.
                */}
-               <SSCSoGDReports provinces={provinces} /> 
+               <SSCSoGDReports /> 
             </TabsContent>
 
             <TabsContent value='school' className='space-y-4 pt-2'>
-               <SSCSchoolReports provinces={provinces} />
+               <SSCSchoolReports />
             </TabsContent>
           </Tabs>
         )

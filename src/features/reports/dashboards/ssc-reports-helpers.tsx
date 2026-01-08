@@ -7,7 +7,7 @@ import { Filter, Building } from 'lucide-react'
 import { allSchools } from '@/data/vn-schools-loader'
 import { provinces as provinceData } from '@/data/provinces'
 
-export function SSCSoGDReports({ provinces }: { provinces: string[] }) {
+export function SSCSoGDReports() {
     // Filter provinces managed by SSC
     const sscProvinces = useMemo(() => {
         return provinceData.filter(p => p.sscPartnerId === 'SSC').map(p => p.name)
@@ -49,7 +49,7 @@ export function SSCSoGDReports({ provinces }: { provinces: string[] }) {
     )
 }
 
-export function SSCSchoolReports({ provinces }: { provinces: string[] }) {
+export function SSCSchoolReports() {
      // Filter provinces managed by SSC
      const sscProvinces = useMemo(() => {
         return provinceData.filter(p => p.sscPartnerId === 'SSC').map(p => p.name)
