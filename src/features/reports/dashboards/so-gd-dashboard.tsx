@@ -7,6 +7,7 @@ import { KPICard } from '@/components/dashboard/kpi-card'
 import { mockWards } from '@/data/mock-sogd'
 import { School, Users, ShieldCheck, TrendingUp, TrendingDown, Map } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { OrderTrendCharts } from '@/features/orders/components/order-trend-charts'
 
 export function SoGDDashboard() {
   // Aggregate data
@@ -58,6 +59,9 @@ export function SoGDDashboard() {
              icon={<ShieldCheck className="h-4 w-4" />}
          />
       </div>
+      
+      {/* Trends Section */}
+      <OrderTrendCharts />
 
       {/* Rankings Tabs */}
       <Card>

@@ -14,17 +14,18 @@ export function Dashboard() {
   const getDashboardContent = () => {
     switch (role) {
       case 'school_admin':
+        // Demo school: Trường Marie Curie - Liên cấp có đầy đủ 3 khối (Tiểu học, THCS, THPT)
         return <SchoolDashboard school={{
-            id: 'SCH-CURRENT',
-            name: 'THPT Nguyễn Thượng Hiền',
-            level: 'THPT',
+            id: 'SCH-MARIECURIE-HCM',
+            name: 'Trường Phổ thông Liên cấp Marie Curie',
+            level: 'Liên cấp',
             province: 'Thành phố Hồ Chí Minh',
-            district: 'Tân Bình',
+            district: 'Quận 3',
             isNational: false,
-            totalStudents: 2450,
-            participationRate: 98.5,
-            principalName: 'Nguyễn Văn A',
-            principalPhone: '0901234567'
+            totalStudents: 4850,
+            participationRate: 97.2,
+            principalName: 'Trần Văn Minh',
+            principalPhone: '0281234567'
         }} />
       case 'agency_admin':
         return <SoGDDashboard />

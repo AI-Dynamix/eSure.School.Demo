@@ -30,8 +30,8 @@ import { KPICard } from '@/components/dashboard/kpi-card'
 
 export function Classes() {
   const [selectedClassId, setSelectedClassId] = useState<string | null>(null)
-  const [expandedLevels, setExpandedLevels] = useState<string[]>(['thcs'])
-  const [expandedGrades, setExpandedGrades] = useState<string[]>(['6'])
+  const [expandedLevels, setExpandedLevels] = useState<string[]>(['tieu_hoc', 'thcs', 'thpt'])
+  const [expandedGrades, setExpandedGrades] = useState<string[]>(['1', '6', '10'])
   
   const classTree = getClassTree()
   const selectedClass = selectedClassId ? getClassById(selectedClassId) : null

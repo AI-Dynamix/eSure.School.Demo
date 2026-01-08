@@ -13,7 +13,16 @@ export function Search({
   className = '',
   placeholder = 'Tìm kiếm',
 }: SearchProps) {
-  const { setOpen } = useSearch()
+  // Safely try to access SearchProvider context
+  let setOpen: ((open: boolean) => void) | null = null
+  try {
+    const searchContext = useSearch()
+    setOpen = searchContext.setOpen
+  } catch {
+    // If SearchProvider is not available, don't render the search button
+    return null
+  }
+
   return (
     <Button
       variant='outline'
@@ -21,7 +30,7 @@ export function Search({
         'group relative h-8 w-full flex-1 justify-start rounded-md bg-muted/25 text-sm font-normal text-muted-foreground shadow-none hover:bg-accent sm:w-40 sm:pe-12 md:flex-none lg:w-52 xl:w-64',
         className
       )}
-      onClick={() => setOpen(true)}
+      onClick={() => setOpen?.(true)}
     >
       <SearchIcon
         aria-hidden='true'

@@ -9,6 +9,7 @@ import {
   IconBuildingBank,
   IconCoin,
   IconChalkboard,
+  IconHeartHandshake,
 } from '@tabler/icons-react'
 
 // Role definitions
@@ -41,7 +42,7 @@ export const teams: Team[] = [
     role: 'ssc_admin',
   },
   {
-    name: 'Trường THCS Lê Văn Tám',
+    name: 'Trường PT Liên cấp Marie Curie',
     logo: '/images/favicon.png',
     plan: 'School Admin',
     role: 'school_admin',
@@ -151,6 +152,11 @@ const navSchool = [
     title: 'Lớp học & Sĩ số', // Thay thế Quản lý HS
     url: '/classes',
     icon: IconChalkboard,
+  },
+  {
+    title: 'Tiện ích Học sinh',
+    url: '/student-services',
+    icon: IconHeartHandshake,
   },
   {
     title: 'Báo cáo',

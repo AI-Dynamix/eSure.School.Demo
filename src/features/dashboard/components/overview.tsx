@@ -3,7 +3,7 @@ import { dashboardStats } from '@/data/dashboard-stats'
 
 export function Overview() {
   return (
-    <ResponsiveContainer width='100%' height={350} minHeight={0}>
+    <ResponsiveContainer width='99%' height={350} minWidth={0} minHeight={0}>
       <BarChart data={dashboardStats.participationRate}>
         <XAxis
           dataKey='month'

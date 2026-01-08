@@ -13,7 +13,7 @@ export function SSCSoGDReports() {
         return provinceData.filter(p => p.sscPartnerId === 'SSC').map(p => p.name)
     }, [])
 
-    const [selectedProvince, setSelectedProvince] = useState<string>('')
+    const [selectedProvince, setSelectedProvince] = useState<string>('Thành phố Hồ Chí Minh')
 
     return (
         <>
@@ -55,8 +55,12 @@ export function SSCSchoolReports() {
         return provinceData.filter(p => p.sscPartnerId === 'SSC').map(p => p.name)
     }, [])
 
-    const [selectedSchoolProvince, setSelectedSchoolProvince] = useState<string>('')
-    const [selectedSchoolId, setSelectedSchoolId] = useState<string>('')
+    const [selectedSchoolProvince, setSelectedSchoolProvince] = useState<string>('Thành phố Hồ Chí Minh')
+    
+    const [selectedSchoolId, setSelectedSchoolId] = useState<string>(() => {
+        const schools = allSchools.filter(s => s.province === 'Thành phố Hồ Chí Minh')
+        return schools.length > 0 ? schools[0].id : ''
+    })
 
     const schoolsInProvince = useMemo(() => {
         if (!selectedSchoolProvince) return []

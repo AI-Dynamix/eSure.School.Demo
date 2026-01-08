@@ -10,6 +10,8 @@ import { Users, ShieldCheck, FileText, FileSpreadsheet, MessageCircle } from 'lu
 import { classes } from '@/data/classes'
 import { generateAllStudents, Student } from '@/data/mock-students'
 import { allSchools } from '@/data/vn-schools-loader'
+import { OrderTrendCharts } from '@/features/orders/components/order-trend-charts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts'
 
 interface SchoolReportsProps {
   schoolId?: string
@@ -20,7 +22,7 @@ export function SchoolReports({ schoolId }: SchoolReportsProps) {
   const [semester, setSemester] = useState('all')
 
   const school = useMemo(() => {
-    if (!schoolId) return { name: 'THCS Lê Văn Tám' }
+    if (!schoolId) return { name: 'Trường PT Liên cấp Marie Curie' }
     return allSchools.find(s => s.id === schoolId) || { name: 'Trường học' }
   }, [schoolId])
 
@@ -55,8 +57,33 @@ export function SchoolReports({ schoolId }: SchoolReportsProps) {
     window.open(`https://zalo.me/${phone}`, '_blank')
   }
 
+  // Level metrics calculation
+  const levelChartsData = useMemo(() => {
+    const levels = {
+      'Tiểu học': { grades: ['1', '2', '3', '4', '5'], label: 'Tiểu học', color: '#3b82f6' },
+      'THCS': { grades: ['6', '7', '8', '9'], label: 'THCS', color: '#10b981' },
+      'THPT': { grades: ['10', '11', '12'], label: 'THPT', color: '#f59e0b' }
+    }
+
+    return Object.entries(levels).map(([_, config]) => {
+      const levelClasses = classes.filter(c => config.grades.includes(c.grade))
+      
+      const totalStudents = levelClasses.reduce((sum, c) => sum + c.declaredSize, 0)
+      const bhytCount = levelClasses.reduce((sum, c) => sum + c.bhytCount, 0)
+      const voluntaryCount = levelClasses.reduce((sum, c) => sum + c.orderCount, 0)
+
+      return {
+        name: config.label,
+        students: totalStudents,
+        bhytRate: totalStudents ? parseFloat(((bhytCount / totalStudents) * 100).toFixed(1)) : 0,
+        voluntaryRate: totalStudents ? parseFloat(((voluntaryCount / totalStudents) * 100).toFixed(1)) : 0,
+        color: config.color
+      }
+    })
+  }, [])
+
   return (
-    <div className='space-y-6 h-[calc(100vh-100px)] flex flex-col'>
+    <div className='space-y-6 pb-20'>
       {/* Title with School Name */}
       <div className='flex-shrink-0'>
         <h2 className='text-2xl font-bold tracking-tight'>Báo cáo chi tiết: {school.name}</h2>
@@ -122,12 +149,67 @@ export function SchoolReports({ schoolId }: SchoolReportsProps) {
             icon={<FileText className='h-4 w-4' />}    
         />
       </div>
+      
+      {/* Level Charts Section */}
+      <div className='flex-shrink-0 mb-6'>
+        <h3 className="text-lg font-semibold mb-4">Thống kê theo Cấp học</h3>
+        <div className='grid gap-4 md:grid-cols-2'>
+            <Card>
+                <CardHeader className='pb-2'>
+                    <CardTitle className='text-base'>Phân bổ học sinh</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className='h-[250px] w-full'>
+                        <ResponsiveContainer width="99%" height="100%" minWidth={0} minHeight={0}>
+                            <BarChart data={levelChartsData}>
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                <XAxis dataKey="name" fontSize={12} tickLine={false} axisLine={false} />
+                                <YAxis fontSize={12} tickLine={false} axisLine={false} />
+                                <Tooltip cursor={{ fill: 'rgba(0,0,0,0.05)' }} contentStyle={{ borderRadius: '8px' }} />
+                                <Bar dataKey="students" name="Số học sinh" radius={[4, 4, 0, 0]}>
+                                    {levelChartsData.map((entry, index) => (
+                                        <Cell key={`cell-${index}`} fill={entry.color} />
+                                    ))}
+                                </Bar>
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader className='pb-2'>
+                    <CardTitle className='text-base'>Tỷ lệ tham gia BHYT & BHTN</CardTitle>
+                </CardHeader>
+                <CardContent>
+                    <div className='h-[250px] w-full'>
+                        <ResponsiveContainer width="99%" height="100%" minWidth={0} minHeight={0}>
+                            <BarChart data={levelChartsData} layout='vertical'>
+                                <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                                <XAxis type="number" fontSize={12} hide />
+                                <YAxis dataKey="name" type="category" fontSize={12} tickLine={false} axisLine={false} />
+                                <Tooltip contentStyle={{ borderRadius: '8px' }} />
+                                <Legend iconType='circle' wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }} />
+                                <Bar dataKey="bhytRate" name="BHYT (%)" fill="hsl(var(--primary))" radius={[0, 4, 4, 0]} barSize={20} />
+                                <Bar dataKey="voluntaryRate" name="Bảo hiểm TN (%)" fill="#10b981" radius={[0, 4, 4, 0]} barSize={20} />
+                            </BarChart>
+                        </ResponsiveContainer>
+                    </div>
+                </CardContent>
+            </Card>
+        </div>
+      </div>
+
+      {/* Charts Section */}
+      <div className='flex-shrink-0'>
+        <OrderTrendCharts showRevenue={false} />
+      </div>
 
       {/* Split Layout: Class Details (Left) vs Need Action (Right) */}
-      <div className='grid grid-cols-1 xl:grid-cols-2 gap-4 flex-1 min-h-0'>
+      <div className='grid grid-cols-1 xl:grid-cols-2 gap-4'>
           
           {/* Left: Class Details Table */}
-          <Card className='flex flex-col h-full overflow-hidden'>
+          <Card className='flex flex-col h-[600px] overflow-hidden'>
             <CardHeader className='pb-2 flex-shrink-0'>
               <CardTitle>Thống kê theo Lớp</CardTitle>
             </CardHeader>
@@ -177,7 +259,7 @@ export function SchoolReports({ schoolId }: SchoolReportsProps) {
           </Card>
 
           {/* Right: Students Need Action */}
-          <Card className='flex flex-col h-full overflow-hidden'>
+          <Card className='flex flex-col h-[600px] overflow-hidden'>
             <CardHeader className='pb-2 flex-shrink-0'>
               <CardTitle>Học sinh cần vận động</CardTitle>
             </CardHeader>

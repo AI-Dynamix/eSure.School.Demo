@@ -6,7 +6,7 @@ export interface SchoolBase {
   province: string
   district: string
   isNational: boolean // if true, belongs to "Trường trực thuộc sở"
-  level: 'Mầm non' | 'Tiểu học' | 'THCS' | 'THPT'
+  level: 'Mầm non' | 'Tiểu học' | 'THCS' | 'THPT' | 'Liên cấp'
   totalStudents: number
   participationRate: number
   principalName: string

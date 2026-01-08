@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { useNavigate } from '@tanstack/react-router'
 import { Header } from '@/components/layout/header'
 import { Main } from '@/components/layout/main'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
@@ -20,21 +21,22 @@ import {
     School
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { allSchools, getProvinceList, getDistrictList, type SchoolBase } from '@/data/vn-schools-loader'
+import { allSchools, getProvinceList, getDistrictList } from '@/data/vn-schools-loader'
 import { provinces as provinceData } from '@/data/provinces'
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog'
-import { SchoolDashboard } from '@/features/reports/dashboards/school-dashboard'
-
 import { useLayout } from '@/context/layout-provider'
 
+/**
+ * NOTE: Schools only manage information and mobilization.
+ * They DO NOT handle revenue, money, or accounting.
+ */
+
 export function Schools() {
+  const navigate = useNavigate()
   const { role } = useLayout()
   const isAgency = role === 'agency_admin'
   const isSSC = role === 'ssc_admin'
   const defaultProvince = (isAgency || isSSC) ? 'Thành phố Hồ Chí Minh' : ''
   
-  const [selectedSchool, setSelectedSchool] = useState<SchoolBase | null>(null)
-
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedProvince, setSelectedProvince] = useState<string>(defaultProvince)
   const [selectedDistrict, setSelectedDistrict] = useState<string>('All')
@@ -84,7 +86,7 @@ export function Schools() {
     }
     
     return list.slice(0, 500) // Limit to 500 for performance
-  }, [selectedProvince, selectedDistrict, searchTerm, isAgency])
+  }, [selectedProvince, selectedDistrict, searchTerm, isAgency, isSSC])
 
   const formatNumber = (n: number) => new Intl.NumberFormat('vi-VN').format(n)
 
@@ -263,7 +265,12 @@ export function Schools() {
                                             </div>
                                         </TableCell>
                                         <TableCell className='text-right'>
-                                            <Button variant='ghost' size='sm' className='h-8 px-2 hover:bg-primary/10 hover:text-primary' onClick={() => setSelectedSchool(school)}>
+                                            <Button 
+                                                variant='ghost' 
+                                                size='sm' 
+                                                className='h-8 px-2 hover:bg-primary/10 hover:text-primary' 
+                                                onClick={() => navigate({ to: '/schools/$schoolId', params: { schoolId: school.id } })}
+                                            >
                                                 Chi tiết
                                             </Button>
                                         </TableCell>
@@ -285,32 +292,7 @@ export function Schools() {
             </CardContent>
           </Card>
         </div>
-
-        {/* School Detail Dialog */}
-        <Dialog open={!!selectedSchool} onOpenChange={(open) => !open && setSelectedSchool(null)}>
-            <DialogContent className="max-w-6xl max-h-[95vh] h-[90vh] p-0 gap-0 overflow-hidden flex flex-col">
-                <DialogHeader className='p-6 pb-2 shrink-0'>
-                    <div className='flex items-start justify-between'>
-                        <div>
-                            <DialogTitle className="text-2xl flex items-center gap-2">
-                                {selectedSchool?.name}
-                                {selectedSchool?.isNational && <Badge variant="secondary">Sở quản lý</Badge>}
-                            </DialogTitle>
-                            <DialogDescription className="flex items-center gap-2 mt-1">
-                                <MapPin className="h-4 w-4" />
-                                {selectedSchool?.district}, {selectedSchool?.province}
-                            </DialogDescription>
-                        </div>
-                    </div>
-                </DialogHeader>
-                
-                <div className="flex-1 overflow-auto bg-muted/10 p-4">
-                     {selectedSchool && <SchoolDashboard school={selectedSchool} />}
-                </div>
-            </DialogContent>
-        </Dialog>
       </Main>
     </>
   )
 }
-

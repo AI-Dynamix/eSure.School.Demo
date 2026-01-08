@@ -19,7 +19,7 @@ export const SCHOOL_LEVELS: { id: SchoolLevel, name: string, grades: string[] }[
   { id: 'thpt', name: 'THPT', grades: ['10', '11', '12'] },
 ]
 
-// Trường THCS Lê Văn Tám (Tiểu học + THCS example)
+// Trường PT Liên cấp Marie Curie (Tiểu học + THCS + THPT)
 export const classes: ClassRecord[] = [
   // Tiểu học - Khối 1
   { id: 'c1a1', name: '1A1', grade: '1', level: 'tieu_hoc', declaredSize: 35, homeroomTeacher: 'Lê Thị Hoa', bhytCount: 35, orderCount: 32 },
@@ -64,6 +64,24 @@ export const classes: ClassRecord[] = [
   { id: 'c9a1', name: '9A1', grade: '9', level: 'thcs', declaredSize: 38, homeroomTeacher: 'Hồ Văn N', bhytCount: 38, orderCount: 15 },
   { id: 'c9a2', name: '9A2', grade: '9', level: 'thcs', declaredSize: 37, homeroomTeacher: 'Mai Thị O', bhytCount: 35, orderCount: 18 },
   { id: 'c9a3', name: '9A3', grade: '9', level: 'thcs', declaredSize: 39, homeroomTeacher: 'Trương Văn P', bhytCount: 39, orderCount: 25 },
+
+  // THPT - Khối 10
+  { id: 'c10a1', name: '10A1', grade: '10', level: 'thpt', declaredSize: 45, homeroomTeacher: 'Nguyễn Văn Quyền', bhytCount: 45, orderCount: 40 },
+  { id: 'c10a2', name: '10A2', grade: '10', level: 'thpt', declaredSize: 44, homeroomTeacher: 'Trần Thị Hạnh', bhytCount: 44, orderCount: 38 },
+  { id: 'c10a3', name: '10A3', grade: '10', level: 'thpt', declaredSize: 43, homeroomTeacher: 'Lê Văn Sơn', bhytCount: 42, orderCount: 35 },
+  { id: 'c10a4', name: '10A4', grade: '10', level: 'thpt', declaredSize: 45, homeroomTeacher: 'Phạm Thị Trang', bhytCount: 45, orderCount: 42 },
+
+  // THPT - Khối 11
+  { id: 'c11a1', name: '11A1', grade: '11', level: 'thpt', declaredSize: 42, homeroomTeacher: 'Hoàng Văn Uy', bhytCount: 42, orderCount: 38 },
+  { id: 'c11a2', name: '11A2', grade: '11', level: 'thpt', declaredSize: 40, homeroomTeacher: 'Vũ Thị Vân', bhytCount: 40, orderCount: 35 },
+  { id: 'c11a3', name: '11A3', grade: '11', level: 'thpt', declaredSize: 41, homeroomTeacher: 'Đặng Văn Xuân', bhytCount: 40, orderCount: 33 },
+  { id: 'c11a4', name: '11A4', grade: '11', level: 'thpt', declaredSize: 43, homeroomTeacher: 'Bùi Thị Yến', bhytCount: 43, orderCount: 40 },
+
+  // THPT - Khối 12
+  { id: 'c12a1', name: '12A1', grade: '12', level: 'thpt', declaredSize: 40, homeroomTeacher: 'Đỗ Văn Anh', bhytCount: 40, orderCount: 32 },
+  { id: 'c12a2', name: '12A2', grade: '12', level: 'thpt', declaredSize: 38, homeroomTeacher: 'Ngô Thị Bình', bhytCount: 38, orderCount: 30 },
+  { id: 'c12a3', name: '12A3', grade: '12', level: 'thpt', declaredSize: 39, homeroomTeacher: 'Dương Văn Cường', bhytCount: 39, orderCount: 28 },
+  { id: 'c12a4', name: '12A4', grade: '12', level: 'thpt', declaredSize: 41, homeroomTeacher: 'Lý Thị Dung', bhytCount: 41, orderCount: 35 },
 ]
 
 // Helper functions

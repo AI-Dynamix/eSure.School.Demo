@@ -107,29 +107,35 @@ export const generateClasses = (schoolId: string, level: string): ClassInfo[] =>
     'Mầm non': [3, 4, 5],
     'Tiểu học': [1, 2, 3, 4, 5],
     'THCS': [6, 7, 8, 9],
-    'THPT': [10, 11, 12]
+    'THPT': [10, 11, 12],
+    'Liên cấp': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] // Đầy đủ 3 khối
   }
   
   const grades = gradeRanges[level] || [1, 2, 3]
   const classes: ClassInfo[] = []
   
   grades.forEach(grade => {
-    const classCount = randomInt(3, 8)
+    // Liên cấp có 3-5 lớp mỗi khối, các trường riêng biệt có 4-8 lớp
+    const classCount = level === 'Liên cấp' ? Math.floor(3 + Math.random() * 3) : Math.floor(4 + Math.random() * 5)
+    
+    // Xác định level thực tế của từng khối trong trường Liên cấp
+    const actualLevel: 'Mầm non' | 'Tiểu học' | 'THCS' | 'THPT' = grade <= 5 ? 'Tiểu học' : grade <= 9 ? 'THCS' : 'THPT'
+    
     for (let c = 1; c <= classCount; c++) {
-      const totalStudents = randomInt(35, 45)
-      const bhytCount = Math.floor(totalStudents * randomFloat(0.95, 1))
-      const voluntaryInsCount = Math.floor(totalStudents * randomFloat(0.6, 0.95))
+      const totalStudents = Math.floor(35 + Math.random() * 11)
+      const bhytCount = Math.floor(totalStudents * (0.95 + Math.random() * 0.05))
+      const voluntaryInsCount = Math.floor(totalStudents * (0.6 + Math.random() * 0.35))
       
       classes.push({
         id: `${schoolId}-${grade}${String.fromCharCode(64 + c)}`,
         name: `${grade}${String.fromCharCode(64 + c)}`,
-        level: level as 'Mầm non' | 'Tiểu học' | 'THCS' | 'THPT',
+        level: actualLevel,
         grade,
         totalStudents,
         bhytCount,
         voluntaryInsCount,
-        pendingPayment: randomInt(0, 5),
-        pendingInfo: randomInt(0, 3),
+        pendingPayment: Math.floor(Math.random() * 6),
+        pendingInfo: Math.floor(Math.random() * 4),
         teacherName: `Giáo viên ${grade}${String.fromCharCode(64 + c)}`
       })
     }
