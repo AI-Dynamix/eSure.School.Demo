@@ -11,6 +11,12 @@ import { NavGroup } from './nav-group'
 import { NavUser } from './nav-user'
 import { TeamSwitcher } from './team-switcher'
 
+import { Search } from '@/components/search'
+import { ThemeSwitch } from '@/components/theme-switch'
+import { SidebarGroup, SidebarGroupContent } from '@/components/ui/sidebar'
+
+// ... imports ...
+
 export function AppSidebar() {
   const { collapsible, variant, role, setRole } = useLayout()
   
@@ -30,8 +36,19 @@ export function AppSidebar() {
           activeTeam={activeTeam}
           onTeamChange={handleTeamChange}
         />
+        <div className='md:hidden mt-2 px-1'>
+           <Search />
+        </div>
       </SidebarHeader>
       <SidebarContent>
+        <SidebarGroup className='md:hidden py-0'>
+            <SidebarGroupContent>
+                 <div className='flex items-center justify-between px-2 py-2 mb-2'>
+                    <span className='text-sm font-medium'>Giao diện</span>
+                    <ThemeSwitch />
+                 </div>
+            </SidebarGroupContent>
+        </SidebarGroup>
         <NavGroup title="Chức năng" items={navItems} />
       </SidebarContent>
       <SidebarFooter>
