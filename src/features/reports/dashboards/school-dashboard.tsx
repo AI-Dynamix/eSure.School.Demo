@@ -52,67 +52,73 @@ export function SchoolDashboard() {
             </TabsList>
             
             <TabsContent value="tieu_hoc">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Khối</TableHead>
-                    <TableHead className='text-right'>Sĩ số khai báo</TableHead>
-                    <TableHead className='text-right'>BHYT</TableHead>
-                    <TableHead className='text-right'>Đơn BH TN</TableHead>
-                    <TableHead className='text-right'>Tỷ lệ TN</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {getGradeBreakdown('tieu_hoc').map((g) => (
-                    <TableRow key={g.grade}>
-                      <TableCell className='font-medium'>{g.grade}</TableCell>
-                      <TableCell className='text-right'>{g.totalStudents.toLocaleString('vi-VN')}</TableCell>
-                      <TableCell className='text-right'>{g.bhytCount.toLocaleString('vi-VN')}</TableCell>
-                      <TableCell className='text-right'>{g.voluntaryCount.toLocaleString('vi-VN')}</TableCell>
-                      <TableCell className='text-right'><Badge variant='secondary'>{g.voluntaryRate}%</Badge></TableCell>
+              <div className="overflow-x-auto">
+                <Table>
+                  {/* ... table content ... */}
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Khối</TableHead>
+                      <TableHead className='text-right'>Sĩ số khai báo</TableHead>
+                      <TableHead className='text-right'>BHYT</TableHead>
+                      <TableHead className='text-right'>Đơn BH TN</TableHead>
+                      <TableHead className='text-right'>Tỷ lệ TN</TableHead>
                     </TableRow>
-                  ))}
-                  {getGradeBreakdown('tieu_hoc').length === 0 && (
-                      <TableRow>
-                          <TableCell colSpan={5} className="text-center text-muted-foreground h-24">
-                              Không có dữ liệu khối Tiểu học
-                          </TableCell>
+                  </TableHeader>
+                  <TableBody>
+                    {getGradeBreakdown('tieu_hoc').map((g) => (
+                      <TableRow key={g.grade}>
+                        <TableCell className='font-medium'>{g.grade}</TableCell>
+                        <TableCell className='text-right'>{g.totalStudents.toLocaleString('vi-VN')}</TableCell>
+                        <TableCell className='text-right'>{g.bhytCount.toLocaleString('vi-VN')}</TableCell>
+                        <TableCell className='text-right'>{g.voluntaryCount.toLocaleString('vi-VN')}</TableCell>
+                        <TableCell className='text-right'><Badge variant='secondary'>{g.voluntaryRate}%</Badge></TableCell>
                       </TableRow>
-                  )}
-                </TableBody>
-              </Table>
+                    ))}
+                    {getGradeBreakdown('tieu_hoc').length === 0 && (
+                        <TableRow>
+                            <TableCell colSpan={5} className="text-center text-muted-foreground h-24">
+                                Không có dữ liệu khối Tiểu học
+                            </TableCell>
+                        </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+              </div>
             </TabsContent>
 
             <TabsContent value="thcs">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Khối</TableHead>
-                    <TableHead className='text-right'>Sĩ số khai báo</TableHead>
-                    <TableHead className='text-right'>BHYT</TableHead>
-                    <TableHead className='text-right'>Đơn BH TN</TableHead>
-                    <TableHead className='text-right'>Tỷ lệ TN</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {getGradeBreakdown('thcs').map((g) => (
-                    <TableRow key={g.grade}>
-                      <TableCell className='font-medium'>{g.grade}</TableCell>
-                      <TableCell className='text-right'>{g.totalStudents.toLocaleString('vi-VN')}</TableCell>
-                      <TableCell className='text-right'>{g.bhytCount.toLocaleString('vi-VN')}</TableCell>
-                      <TableCell className='text-right'>{g.voluntaryCount.toLocaleString('vi-VN')}</TableCell>
-                      <TableCell className='text-right'><Badge variant='secondary'>{g.voluntaryRate}%</Badge></TableCell>
+              <div className="overflow-x-auto">
+                <Table>
+                  {/* ... table content ... */}
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Khối</TableHead>
+                      <TableHead className='text-right'>Sĩ số khai báo</TableHead>
+                      <TableHead className='text-right'>BHYT</TableHead>
+                      <TableHead className='text-right'>Đơn BH TN</TableHead>
+                      <TableHead className='text-right'>Tỷ lệ TN</TableHead>
                     </TableRow>
-                  ))}
-                  {getGradeBreakdown('thcs').length === 0 && (
-                      <TableRow>
-                          <TableCell colSpan={5} className="text-center text-muted-foreground h-24">
-                              Không có dữ liệu khối THCS
-                          </TableCell>
+                  </TableHeader>
+                  <TableBody>
+                    {getGradeBreakdown('thcs').map((g) => (
+                      <TableRow key={g.grade}>
+                        <TableCell className='font-medium'>{g.grade}</TableCell>
+                        <TableCell className='text-right'>{g.totalStudents.toLocaleString('vi-VN')}</TableCell>
+                        <TableCell className='text-right'>{g.bhytCount.toLocaleString('vi-VN')}</TableCell>
+                        <TableCell className='text-right'>{g.voluntaryCount.toLocaleString('vi-VN')}</TableCell>
+                        <TableCell className='text-right'><Badge variant='secondary'>{g.voluntaryRate}%</Badge></TableCell>
                       </TableRow>
-                  )}
-                </TableBody>
-              </Table>
+                    ))}
+                    {getGradeBreakdown('thcs').length === 0 && (
+                        <TableRow>
+                            <TableCell colSpan={5} className="text-center text-muted-foreground h-24">
+                                Không có dữ liệu khối THCS
+                            </TableCell>
+                        </TableRow>
+                    )}
+                  </TableBody>
+                </Table>
+              </div>
             </TabsContent>
           </Tabs>
         </CardContent>
