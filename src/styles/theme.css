@@ -70,7 +70,16 @@
   --sidebar-accent-foreground: 0 0% 100%;
   --sidebar-border: 240 3.7% 15.9%;
   --sidebar-ring: 142 76% 45%;
-}
+  /* End .dark block */
+  }
+
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 @theme inline {

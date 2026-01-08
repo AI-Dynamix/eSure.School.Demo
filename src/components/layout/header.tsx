@@ -51,7 +51,7 @@ export function Header({ fixed, title, description, actions }: HeaderProps) {
 
         {/* Left: Title + Description Info */}
         <div className='flex items-center gap-2 flex-1 min-w-0'>
-          <h1 className='text-base sm:text-lg font-semibold tracking-tight truncate'>
+          <h1 className='text-base sm:text-lg font-semibold tracking-tight truncate text-foreground'>
             {title}
           </h1>
           {description && (
