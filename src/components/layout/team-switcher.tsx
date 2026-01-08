@@ -26,6 +26,19 @@ type TeamSwitcherProps = {
 
 export function TeamSwitcher({ teams, activeTeam, onTeamChange }: TeamSwitcherProps) {
   const { isMobile } = useSidebar()
+  
+  // Filter teams based on mock user identity
+  const visibleTeams = teams.filter(team => {
+    if (typeof window === 'undefined') return true
+    const userIdentity = localStorage.getItem('user_identity')
+    
+    // If identity is ssc_admin, hide esure_admin role
+    if (userIdentity === 'ssc_admin' && team.role === 'esure_admin') {
+      return false
+    }
+    
+    return true
+  })
 
   return (
     <SidebarMenu>
@@ -62,9 +75,9 @@ export function TeamSwitcher({ teams, activeTeam, onTeamChange }: TeamSwitcherPr
             sideOffset={4}
           >
             <DropdownMenuLabel className='text-xs text-muted-foreground'>
-              Đội ngũ
+              Vai trò
             </DropdownMenuLabel>
-            {teams.map((team, index) => (
+            {visibleTeams.map((team, index) => (
               <DropdownMenuItem
                 key={team.name}
                 onClick={() => onTeamChange(team)}

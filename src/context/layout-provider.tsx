@@ -47,7 +47,14 @@ export function LayoutProvider({ children }: LayoutProviderProps) {
 
   // Role state (default to esure_admin)
   const [role, _setRole] = useState<string>(() => {
-    const saved = typeof window !== 'undefined' ? localStorage.getItem('role') : null
+    if (typeof window === 'undefined') return 'esure_admin'
+    
+    // Prioritize user_identity set by login
+    const identity = localStorage.getItem('user_identity')
+    if (identity) return identity
+
+    // Fallback to legacy role key
+    const saved = localStorage.getItem('role')
     return saved || 'esure_admin'
   })
 

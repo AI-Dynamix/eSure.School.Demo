@@ -26,7 +26,6 @@ const notificationsFormSchema = z.object({
   }),
   mobile: z.boolean().default(false).optional(),
   communication_emails: z.boolean().default(false).optional(),
-  social_emails: z.boolean().default(false).optional(),
   marketing_emails: z.boolean().default(false).optional(),
   security_emails: z.boolean(),
 })
@@ -37,7 +36,6 @@ type NotificationsFormValues = z.infer<typeof notificationsFormSchema>
 const defaultValues: Partial<NotificationsFormValues> = {
   communication_emails: false,
   marketing_emails: false,
-  social_emails: true,
   security_emails: true,
 }
 
@@ -129,26 +127,6 @@ export function NotificationsForm() {
                     </FormLabel>
                     <FormDescription>
                       Nhận email về sản phẩm mới, tính năng và nhiều hơn nữa.
-                    </FormDescription>
-                  </div>
-                  <FormControl>
-                    <Switch
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name='social_emails'
-              render={({ field }) => (
-                <FormItem className='flex flex-row items-center justify-between rounded-lg border p-4'>
-                  <div className='space-y-0.5'>
-                    <FormLabel className='text-base'>Email mạng xã hội</FormLabel>
-                    <FormDescription>
-                      Nhận email về lời mời kết bạn, theo dõi và nhiều hơn nữa.
                     </FormDescription>
                   </div>
                   <FormControl>

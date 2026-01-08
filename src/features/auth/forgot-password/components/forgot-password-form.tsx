@@ -46,9 +46,9 @@ export function ForgotPasswordForm({
         setIsLoading(false)
         form.reset()
         navigate({ to: '/otp' })
-        return `Email sent to ${data.email}`
+        return `Email đã được gửi tới ${data.email}`
       },
-      error: 'Error',
+      error: 'Lỗi',
     })
   }
 

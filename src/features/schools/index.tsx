@@ -31,7 +31,7 @@ export function Schools() {
   const { role } = useLayout()
   const isAgency = role === 'agency_admin'
   const isSSC = role === 'ssc_admin'
-  const defaultProvince = isAgency ? 'Thành phố Hồ Chí Minh' : ''
+  const defaultProvince = (isAgency || isSSC) ? 'Thành phố Hồ Chí Minh' : ''
   
   const [selectedSchool, setSelectedSchool] = useState<SchoolBase | null>(null)
 

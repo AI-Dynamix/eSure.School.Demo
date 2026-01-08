@@ -10,7 +10,6 @@ import {
 import { Search } from '@/components/search'
 import { ThemeSwitch } from '@/components/theme-switch'
 import { ConfigDrawer } from '@/components/config-drawer'
-import { ProfileDropdown } from '@/components/profile-dropdown'
 import { SidebarTrigger } from '@/components/ui/sidebar'
 
 type HeaderProps = {
@@ -76,13 +75,12 @@ export function Header({ fixed, title, description, actions }: HeaderProps) {
           <Search />
           <ThemeSwitch />
           <ConfigDrawer />
-          <ProfileDropdown />
         </div>
         
-        {/* Mobile: Profile Dropdown */}
-        <div className='md:hidden ms-auto'>
+        {/* Mobile: Profile Dropdown - Removed as per request */}
+        {/* <div className='md:hidden ms-auto'>
            <ProfileDropdown />
-        </div>
+        </div> */}
       </div>
     </header>
   )

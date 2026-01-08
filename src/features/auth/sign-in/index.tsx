@@ -19,8 +19,8 @@ export function SignIn() {
         <CardHeader>
           <CardTitle className='text-lg tracking-tight'>Đăng nhập</CardTitle>
           <CardDescription>
-            Enter your email and password below to <br />
-            log into your account
+            Nhập email và mật khẩu của bạn để <br />
+            đăng nhập vào tài khoản
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -28,19 +28,19 @@ export function SignIn() {
         </CardContent>
         <CardFooter>
           <p className='px-8 text-center text-sm text-muted-foreground'>
-            By clicking sign in, you agree to our{' '}
+            Bằng việc đăng nhập, bạn đồng ý với{' '}
             <a
               href='/terms'
               className='underline underline-offset-4 hover:text-primary'
             >
-              Terms of Service
+              Điều khoản dịch vụ
             </a>{' '}
-            and{' '}
+            và{' '}
             <a
               href='/privacy'
               className='underline underline-offset-4 hover:text-primary'
             >
-              Privacy Policy
+              Chính sách bảo mật
             </a>
             .
           </p>
